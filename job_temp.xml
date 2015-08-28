@@ -1,0 +1,34 @@
+<joblist>
+  <job>
+    <id />
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing="false" strategy="node-first">
+      <command>
+        <description>copy configuration file to vnf</description>
+        <node-step-plugin type="copyfile">
+          <configuration>
+            <entry key="destinationPath" value="/home/vtc/container/" />
+            <entry key="echo" value="true" />
+            <entry key="sourcePath" value="/home/bsendas/mAPI_pkg/mAPI/VNF_Library/VNF_vTC3/halt.json" />
+          </configuration>
+        </node-step-plugin>
+      </command>
+      <command>
+        <exec>service vtc shutoff</exec>
+        <description>run vnf command</description>
+      </command>
+    </sequence>
+    <description>T-NOVA middleware API</description>
+    <name>halt</name>
+    <context>
+      <project>vTC3</project>
+    </context>
+    <dispatch>
+      <threadcount>1</threadcount>
+      <keepgoing>false</keepgoing>
+      <excludePrecedence>true</excludePrecedence>
+      <rankOrder>ascending</rankOrder>
+    </dispatch>
+    <uuid />
+  </job>
+</joblist>

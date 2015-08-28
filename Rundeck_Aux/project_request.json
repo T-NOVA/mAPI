@@ -1,0 +1,9 @@
+{
+  "name":"",
+  "config":{
+    "resources.source.1.config.requireFileExists":"false",
+    "resources.source.1.config.includeServerNode":"false",
+    "resources.source.1.config.generateFileAutomatically":"true",
+    "project.ssh-keypath":""
+   }
+}

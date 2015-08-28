@@ -1,0 +1,42 @@
+<joblist>
+  <job>
+    <id></id>
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <description>copy configuration file to vnf</description>
+        <node-step-plugin type='copyfile'>
+          <configuration>
+            <entry key='destinationPath' value='' />
+            <entry key='echo' value='true' />
+            <entry key='sourcePath' value='' />
+          </configuration>
+        </node-step-plugin>
+      </command>
+      <command>
+        <exec></exec>
+        <description>run vnf command</description>
+      </command>
+    </sequence>
+    <description>T-NOVA middleware API</description>
+    <name></name>
+    <context>
+      <project></project>
+    </context>
+    <notification>
+      <onfailure>
+        <webhook urls='' />
+      </onfailure>
+      <onsuccess>
+        <webhook urls='' />
+      </onsuccess>
+    </notification>
+    <dispatch>
+      <threadcount>1</threadcount>
+      <keepgoing>false</keepgoing>
+      <excludePrecedence>true</excludePrecedence>
+      <rankOrder>ascending</rankOrder>
+    </dispatch>
+    <uuid></uuid>
+  </job>
+</joblist>
