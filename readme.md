@@ -136,6 +136,7 @@ Bellow you can find an example of a partial VNF Descriptor (with only the lifecy
   }
 
 }
+```
 
 To upload this VNFD to mAPI you can use cURL:
 
