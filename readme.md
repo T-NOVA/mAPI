@@ -35,23 +35,23 @@ To configure the Middleware API you can use the mAPI.cfg file present in the 'Co
 
 ### Configuration Parameters
 
-'''authentication'''
+#### authentication
 
 username - username for mAPI northbound interface authentication
 
 password - password for mAPI northbound interface authentication
 
-'''server'''
+#### server
 
 ip - IP address for the mAPI northbound interface
 
 port - Port number for the mAPI norhbound interface
 
-'''general'''
+#### general
 
 folder - folder location of the mAPI software
 
-'''rundeck'''
+#### rundeck
 
 host - IP address of the host where Rundeck is running
 
@@ -59,7 +59,7 @@ token - authentication token used in Rundeck
 
 project folder - folder location of Rundeck projects folder
 
-'''db'''
+#### db
 
 user - username for MySQL database authentication
 
