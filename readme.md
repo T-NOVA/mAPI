@@ -22,12 +22,12 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 ## Tested Configuration
 
 ### Software Versions
-- Ubuntu
-- Python
-- Bottle
-- SQLAlchemy
-- Rundeck
-- MySQL
+- Ubuntu - 14.04
+- Python - 2.7.6
+- Bottle - 0.12
+- SQLAlchemy - 0.8.4
+- Rundeck - 2.4.2
+- MySQL - 5.5.43
 
 ## Configuration
 
