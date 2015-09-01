@@ -34,31 +34,38 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 To configure the Middleware API you can use the mAPI.cfg file present in the 'Config' folder.
 
 ### Configuration Parameters
-| Section        | Parameter      | Value  | Description |
 
-| -------------- | -------------- | ------ | ----------- |
+'''authentication'''
 
-| authentication | username       | string | username for mAPI northbound interface authentication|
+username - username for mAPI northbound interface authentication
 
-| authentication | password       | string | password for mAPI northbound interface authentication|
+password - password for mAPI northbound interface authentication
 
-| server         | ip             | string | IP address for the mAPI northbound interface|
+'''server'''
 
-| server         | port           | string | Port number for the mAPI norhbound interface|
+ip - IP address for the mAPI northbound interface
 
-| general        | folder         | string | folder location of the mAPI software|
+port - Port number for the mAPI norhbound interface
 
-| rundeck        | host           | string | IP address of the host where Rundeck is running|
+'''general'''
 
-| rundeck        | token          | string | authentication token used in Rundeck |
+folder - folder location of the mAPI software
 
-| rundeck        | project folder | string | folder location of Rundeck projects folder| 
+'''rundeck'''
 
-| db             | user           | string | username for MySQL database authentication|
+host - IP address of the host where Rundeck is running
 
-| db             | password       | string | password for MySQL database authentication| 
+token - authentication token used in Rundeck
 
-| db             | ip             | string | IP address of MySQL server|
+project folder - folder location of Rundeck projects folder
+
+'''db'''
+
+user - username for MySQL database authentication
+
+password -  password for MySQL database authentication
+
+ip - IP address of MySQL server
 
 
 ## Running Middleware API
