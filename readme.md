@@ -74,4 +74,40 @@ To run the Middleware API just type in terminal:
 
  ~/mAPI_folder/python run.py
 
+## VNF registration example
 
+Bellow you can find an example of a partial VNF Descriptor (with only the lifecycle management related sections):
+
+{
+  "id":"vTC3", 
+  "lifecycle_event":{
+    "Driver":"SSH",
+    "Authentication":"private_key.pem",
+    "Authentication_Type":"private key",
+    "VNF_Container":"/home/vtc/container/",
+    "events":[
+      {
+        "Event":"start", 
+        "Command":"service vtc start", 
+        "Template File Format":"json", 
+        "Template File":"{ \"controller\":\"cntr_IP\", \"vdu1\":\"vdu1_IP\", \"vdu2\":\"vdu2_IP\" }"
+      },
+      {
+        "Event":"stop",
+        "Command":"service vtc stop",
+        "Template File Format":"json",
+        "Template File":"{\"controller\":\"cntr_IP\",\"vdu1\":\"vdu1_IP\",\"vdu2\":\"vdu2_IP\"}"
+      },
+      {
+        "Event":"halt",
+        "Command":"service vtc shutoff",
+        "Template File Format":"json",
+        "Template File":"{\"controller\":\"cntr_IP\",\"vdu1\":\"vdu1_IP\",\"vdu2\":\"vdu2_IP\"}"
+      }
+    ]
+  }
+}
+
+To upload this VNFD to mAPI you can use cURL:
+
+curl -X POST 0.0.0.0:1234/vnf_api/ -u admin:changeme -d @~/mAPI/temp.json -v
