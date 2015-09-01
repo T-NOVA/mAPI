@@ -69,3 +69,9 @@ ip - IP address of MySQL server
 
 
 ## Running Middleware API
+
+To run the Middleware API just type in terminal:
+
+ ~/mAPI_folder/python run.py
+
+
