@@ -78,6 +78,7 @@ To run the Middleware API just type in terminal:
 
 Bellow you can find an example of a partial VNF Descriptor (with only the lifecycle management related sections):
 
+'''json
 {
 
   "id":"vTC3", 
