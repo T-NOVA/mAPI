@@ -118,23 +118,14 @@ Bellow you can find an example of a partial VNF Descriptor (with only the lifecy
         "Template File":"{\"controller\":\"cntr_IP\",\"vdu1\":\"vdu1_IP\",\"vdu2\":\"vdu2_IP\"}"
 
       },
-
       {
-
         "Event":"halt",
-
         "Command":"service vtc shutoff",
-
         "Template File Format":"json",
-
         "Template File":"{\"controller\":\"cntr_IP\",\"vdu1\":\"vdu1_IP\",\"vdu2\":\"vdu2_IP\"}"
-
       }
-
     ]
-
   }
-
 }
 ```
 
