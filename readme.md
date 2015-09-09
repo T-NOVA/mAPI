@@ -26,8 +26,37 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 - Python - 2.7.6
 - Bottle - 0.12
 - SQLAlchemy - 0.8.4
-- Rundeck - 2.4.2
+- Rundeck - 2.4.2, 2.5.3
 - MySQL - 5.5.43
+
+## Install Guide
+
+This guide was tested in Ubuntu 14.04 LTS
+
+### Install Rundeck
+
+1. Go to page http://rundeck.org
+2. Scroll to section "Debian/Ubuntu Install" and copy the download link 
+3. In terminal do: 
+..1. wget <download link> (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-<version>-GA.deb)
+..2. sudo apt-get install openjdk-7-jdk
+..3. sudo dpkg -i rundeck-<version>-GA.deb 
+
+### Install MySQL
+
+1. sudo apt-get install mysql-server
+2. enter admin password, it will be used later to configure the mAPI
+
+### Install Python dependencies
+
+1. Install Bottle framework
+..1. sudo apt-get install python-bottle
+2. Install SQLAlchemy
+..2. sudo apt-get install python-sqlalchemy
+
+### Get mAPI code
+
+
 
 ## Configuration
 
