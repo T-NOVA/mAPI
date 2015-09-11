@@ -40,7 +40,7 @@ This guide was tested in Ubuntu 14.04 LTS
 3. In terminal do: 
 
 ```
-  wget <download link> (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-"version"-GA.deb)
+  wget "download link" (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-"version"-GA.deb)
 ```
 
 ```
@@ -48,8 +48,100 @@ This guide was tested in Ubuntu 14.04 LTS
 ```
 
 ```
-  sudo dpkg -i rundeck-<version>-GA.deb 
+  sudo dpkg -i rundeck-"version"-GA.deb 
 ```
+
+#### Rundeck project creation permissions
+
+It is necessary to give authorization to create projects using the API
+
+The file admin.aclpolicy in /etc/rundeck/ should look like this
+
+```
+description: API project level access control
+context:
+  project: '.*' # all projects
+for:
+  resource:
+    - equals:
+        kind: job
+      allow: [create,delete,read] # allow create and delete jobs
+    - equals:
+        kind: node
+      allow: [read,create,update,refresh] # allow refresh node sources
+    - equals:
+        kind: event
+      allow: [read,create] # allow read/create events
+    - equals:
+        kind: project
+      allow: [read,create]
+  adhoc:
+    - allow: [read,run,kill] # allow running/killing adhoc jobs and read output
+  job:
+    - allow: [create,read,update,delete,run,kill] # allow create/read/write/delete/run/kill of all jobs
+  node:
+    - allow: [read,run] # allow read/run for all nodes
+  project:
+    - allow: [create,read,update,delete,import,export,admin]
+by:
+  group: api_token_group
+
+---
+
+description: API Application level access control
+context:
+  application: 'rundeck'
+for:
+  resource:
+    - equals:
+        kind: system
+      allow: [read] # allow read of system info
+  project:
+    - match:
+        name: '.*'
+      allow: [admin,import,export,read,create] # allow view of all projects
+  storage:
+    - match:
+        path: '(keys|keys/.*)'
+      allow: '*' # allow all access to manage stored keys
+by:
+  group: api_token_group
+```
+
+The file apitoken.aclpolicy in /etc/rundeck/ should look like this:
+
+```
+description: Admin, all access.
+context:
+  project: '.*' # all projects
+for:
+  resource:
+    - allow: '*' # allow read/create all kinds
+  adhoc:
+    - allow: '*' # allow read/running/killing adhoc jobs
+  job:
+    - allow: '*' # allow read/write/delete/run/kill of all jobs
+  node:
+    - allow: '*' # allow read/run for all nodes
+by:
+  group: [admin,api_token_group]
+
+---
+
+description: Admin, all access.
+context:
+  application: 'rundeck'
+for:
+  resource:
+    - allow: '*' # allow create of projects
+  project:
+    - allow: '*' # allow view/admin of all projects
+  storage:
+    - allow: '*' # allow read/create/update/delete for all /keys/* storage content
+by:
+  group: [admin,api_token_group]
+```
+
 
 ### Install MySQL
 
@@ -132,12 +224,14 @@ Because this is just an example some sections remained unchanged:
 
 #### "general" Section
 
+1. Set the mAPI folder variable
+
 #### "rundeck" Section
 
 1. We will need to start Rundeck to retrieve the authentication token. Rundeck default configuration sets the GUI to localhost, if you want outside access to the GUI it is needed to change the configuration. 
   1. Change the variable "grails.serverURL" in /etc/rundeck/rundeck-config.properties to the IP address of your choice (skip this step if don't want outside access to the GUI)
   2. If you're running the mAPI in VM in OpenStack don't forget to change the Security Groups to allow TCP on port 4440
-  3. Enter the Rundeck URL in your browser (<IP address>:4440)
+  3. Enter the Rundeck URL in your browser ("IP address":4440)
   4. Username and password for the admin user are admin:admin
   5. Go to admin>Profile and enter a mail address
   6. Next click on "generate new token"
@@ -145,9 +239,7 @@ Because this is just an example some sections remained unchanged:
 
 #### "db" Section 
 
-
-
-
+1. Set the password and user for MySQL
 
 ## Running Middleware API
 
