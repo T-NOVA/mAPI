@@ -245,7 +245,7 @@ Because this is just an example some sections remained unchanged:
 
 To run the Middleware API just type in terminal:
 
- ~/mAPI_folder/python run.py
+ ~/mAPI_folder/python registerinterface.py
 
 ### VNF registration example
 
