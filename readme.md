@@ -38,28 +38,33 @@ This guide was tested in Ubuntu 14.04 LTS
 1. Go to page http://rundeck.org
 2. Scroll to section "Debian/Ubuntu Install" and copy the download link 
 3. In terminal do: 
-
-  a. wget <download link> (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-<version>-GA.deb)
-
-  b. sudo apt-get install openjdk-7-jdk
-
-  c. sudo dpkg -i rundeck-<version>-GA.deb 
+```
+  wget <download link> (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-"version"-GA.deb)
+  sudo apt-get install openjdk-7-jdk
+  sudo dpkg -i rundeck-<version>-GA.deb 
+```
 
 ### Install MySQL
 
 1. sudo apt-get install mysql-server
 2. enter admin password, it will be used later to configure the mAPI
-3. create mapi database
-  a. enter mysql console: mysql -u "username" -p"password"
-  b. create database: create database mapi;
+3. create mapi database, in terminal do:
+```
+  mysql -u "username" -p"password"
+  create database mapi;
+```
 
 ### Install Python dependencies
 
 1. Install Bottle framework
-  1. sudo apt-get install python-bottle
+```
+sudo apt-get install python-bottle
+```
 2. Install SQLAlchemy
-  2. sudo apt-get install python-sqlalchemy
-  3. sudo apt-get install python-mysqldb
+```
+sudo apt-get install python-sqlalchemy
+sudo apt-get install python-mysqldb
+```
 
 ### Get mAPI code
  
