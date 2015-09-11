@@ -119,6 +119,7 @@ Because this is just an example some sections remained unchanged:
 
 
 
+
 ## Running Middleware API
 
 To run the Middleware API just type in terminal:
