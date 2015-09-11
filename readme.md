@@ -38,17 +38,17 @@ This guide was tested in Ubuntu 14.04 LTS
 1. Go to page http://rundeck.org
 2. Scroll to section "Debian/Ubuntu Install" and copy the download link 
 3. In terminal do: 
-  a. wget <download link> (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-<version>-GA.deb)
-  b. sudo apt-get install openjdk-7-jdk
-  c. sudo dpkg -i rundeck-<version>-GA.deb 
+  * wget <download link> (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-<version>-GA.deb)
+  * sudo apt-get install openjdk-7-jdk
+  * sudo dpkg -i rundeck-<version>-GA.deb 
 
 ### Install MySQL
 
 1. sudo apt-get install mysql-server
 2. enter admin password, it will be used later to configure the mAPI
 3. create mapi database
-  1. enter mysql console: mysql -u "username" -p"password"
-  2. create database: create database mapi;
+  a. enter mysql console: mysql -u "username" -p"password"
+  b. create database: create database mapi;
 
 ### Install Python dependencies
 
