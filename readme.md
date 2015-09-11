@@ -38,21 +38,25 @@ This guide was tested in Ubuntu 14.04 LTS
 1. Go to page http://rundeck.org
 2. Scroll to section "Debian/Ubuntu Install" and copy the download link 
 3. In terminal do: 
-..1. wget <download link> (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-<version>-GA.deb)
-..2. sudo apt-get install openjdk-7-jdk
-..3. sudo dpkg -i rundeck-<version>-GA.deb 
+  1. wget <download link> (in our case it was http://dl.bintray.com/rundeck/rundeck-deb/rundeck-<version>-GA.deb)
+  2. sudo apt-get install openjdk-7-jdk
+  3. sudo dpkg -i rundeck-<version>-GA.deb 
 
 ### Install MySQL
 
 1. sudo apt-get install mysql-server
 2. enter admin password, it will be used later to configure the mAPI
+3. create mapi database
+  1. enter mysql console: mysql -u "username" -p"password"
+  2. create database: create database mapi;
 
 ### Install Python dependencies
 
 1. Install Bottle framework
-..1. sudo apt-get install python-bottle
+  1. sudo apt-get install python-bottle
 2. Install SQLAlchemy
-..2. sudo apt-get install python-sqlalchemy
+  2. sudo apt-get install python-sqlalchemy
+  3. sudo apt-get install python-mysqldb
 
 ### Get mAPI code
  
@@ -106,13 +110,13 @@ Because this is just an example some sections remained unchanged:
 #### "rundeck" Section
 
 1. We will need to start Rundeck to retrieve the authentication token. Rundeck default configuration sets the GUI to localhost, if you want outside access to the GUI it is needed to change the configuration. 
-1.1. Change the variable "grails.serverURL" in /etc/rundeck/rundeck-config.properties to the IP address of your choice (skip this step if don't want outside access to the GUI)
-1.2. If you're running the mAPI in VM in OpenStack don't forget to change the Security Groups to allow TCP on port 4440
-1.3. Enter the Rundeck URL in your browser (<IP address>:4440)
-1.4. Username and password for the admin user are admin:admin
-1.5. Go to admin>Profile and enter a mail address
-1.6. Next click on "generate new token"
-1.7. Copy the token to the mAPI.cfg file to where it says token
+  1. Change the variable "grails.serverURL" in /etc/rundeck/rundeck-config.properties to the IP address of your choice (skip this step if don't want outside access to the GUI)
+  2. If you're running the mAPI in VM in OpenStack don't forget to change the Security Groups to allow TCP on port 4440
+  3. Enter the Rundeck URL in your browser (<IP address>:4440)
+  4. Username and password for the admin user are admin:admin
+  5. Go to admin>Profile and enter a mail address
+  6. Next click on "generate new token"
+  7. Copy the token to the mAPI.cfg file to where it says token
 
 #### "db" Section 
 
