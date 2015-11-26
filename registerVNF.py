@@ -8,7 +8,6 @@ conf = Configuration()
 mapi_folder = conf.get_mAPI_folder()
 
 def register_vnf(vnf_id, vnf_descriptor):
-#  child = fork()
   child =0
   if child == 0:
     #create DB object
@@ -27,10 +26,10 @@ def register_vnf(vnf_id, vnf_descriptor):
       event["VNF Container"] = vnf_descriptor["lifecycle_event"]["VNF_Container"]
       job_url = create_job(vnf_id, event)
       #write templates to files
-      if event["Template File Format"] == 'xml':
-        fromstring(job["Template File"]).write(mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.xml', encoding="UTF-8", xml_declaration=True)
-      elif event["Template File Format"] == 'json':
-        with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.json', 'w') as jsonfile:
-          jsonfile.write(event["Template File"])
-#criar ficheiro de template e guardar na directoria
+      if event.has_key("Template File Format"):
+        if event["Template File Format"] == 'xml':
+          fromstring(job["Template File"]).write(mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.xml', encoding="UTF-8", xml_declaration=True)
+        elif event["Template File Format"] == 'json':
+          with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.json', 'w') as jsonfile:
+            jsonfile.write(event["Template File"])
       db.add_event(event["Event"], job_url, vnf_obj)

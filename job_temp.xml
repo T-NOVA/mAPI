@@ -7,21 +7,21 @@
         <description>copy configuration file to vnf</description>
         <node-step-plugin type="copyfile">
           <configuration>
-            <entry key="destinationPath" value="/home/vtc/container/" />
+            <entry key="destinationPath" value="/home/bsendas/container/" />
             <entry key="echo" value="true" />
-            <entry key="sourcePath" value="/home/bsendas/mAPI_pkg/mAPI/VNF_Library/VNF_vTC3/halt.json" />
+            <entry key="sourcePath" value="/home/bsendas/wp5/WP5/mAPI/VNF_Library/VNF_localvNF/current.json" />
           </configuration>
         </node-step-plugin>
       </command>
       <command>
-        <exec>service vtc shutoff</exec>
+        <exec>python /home/bsendas/local_vnf/halt.py</exec>
         <description>run vnf command</description>
       </command>
     </sequence>
     <description>T-NOVA middleware API</description>
     <name>halt</name>
     <context>
-      <project>vTC3</project>
+      <project>localvNF</project>
     </context>
     <dispatch>
       <threadcount>1</threadcount>
@@ -30,5 +30,8 @@
       <rankOrder>ascending</rankOrder>
     </dispatch>
     <uuid />
+    <nodefilters>
+      <filter>.*</filter>
+    </nodefilters>
   </job>
 </joblist>

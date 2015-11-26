@@ -1,0 +1,27 @@
+{
+  "id":"localvNF", 
+  "lifecycle_event":{
+    "Driver":"SSH",
+    "Authentication":"local.pem",
+    "Authentication_Type":"private key",
+    "VNF_Container":"/home/bsendas/container/",
+    "events":[
+      {
+        "Event":"start", 
+        "Command":"python /home/bsendas/local_vnf/start.py", 
+        "Template File Format":"json", 
+        "Template File":"{ \"controller\":\"get_attr[vdu1,PublicIp]\", \"vdu1\":\"get_attr[vdu1,PublicIp]\", \"vdu2\":\"get_attr[vdu2,PrimaryPrivateIpAddress]\" }"
+      },
+      {
+        "Event":"stop",
+        "Command":"python /home/bsendas/local_vnf/stop.py"
+      },
+      {
+        "Event":"halt",
+        "Command":"python /home/bsendas/local_vnf/halt.py",
+        "Template File Format":"json",
+        "Template File":"{\"controller\":\"get_attr[vdu1,PublicIp]\",\"vdu1\":\"get_attr[vdu1,PublicIp]\",\"vdu2\":\"get_attr[vdu2,PrimaryPrivateIpAddress]\"}"
+      }
+    ]
+  }
+}

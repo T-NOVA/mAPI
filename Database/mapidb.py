@@ -33,7 +33,10 @@ class mapiDB(object):
     self.session.commit()
 
   def get_event(self, event_name, vnf):
-    return self.session.query(Event).filter(Event.name == event_name).filter(Event.vnfId == vnf.id).one()
+    return self.session.query(Event).filter(Event.name == event_name).filter(Event.vnfId == vnf).one()
+
+  def get_all_events(self, vnf):
+    return self.session.query(Event).filter(Event.vnfId == vnf).all()
 
   def delete_event(self, event):
     self.session.delete(event)

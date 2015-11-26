@@ -1,0 +1,8 @@
+{
+  "event":"start",
+  "vnf_controller":["10.0.2.15"],
+  "parameters":{
+    "vdu1_PublicIp":["10.0.2.15"],
+    "vdu2_PrimaryPrivateIpAddress":["10.0.2.20"]
+  }
+}

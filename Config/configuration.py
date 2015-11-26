@@ -6,6 +6,18 @@ class Configuration(object):
     self.config = RawConfigParser()
     self.config.read('./Config/mAPI.cfg')
 
+  def get_authentication_method(self):
+    return self.config.get('authentication', 'authentication_method')
+
+  def get_gk_host(self):
+    return self.config.get('authentication', 'gatekeeper_host')
+
+  def get_gk_port(self):
+    return self.config.get('authentication', 'gatekeeper_port')
+
+  def get_gk_key(self):
+    return self.config.get('authentication', 'service_key')
+
   def get_username(self):
     return self.config.get('authentication', 'username') 
 
@@ -32,6 +44,9 @@ class Configuration(object):
 
   def get_rundeck_project_folder(self):
     return self.config.get('rundeck', 'project_folder')
+
+  def get_TNOVA_user(self):
+    return self.config.get('rundeck', 'TNOVA_user')
 
   def get_db_parameters(self):
     return self.config.get('db','user'), self.config.get('db','password'), self.config.get('db','ip')

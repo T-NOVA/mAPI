@@ -1,1 +1,0 @@
-vnfd = {"id":"vTC", "ems":{"Driver":"SSH", "Authentication":"private_key.pem", "Authentication_Type":"private key", "VNF_Container":"/home/tnova/container/"}, "lifecycle_events":[{"Event":"start fw", "Command":"service policy_agent start", "Template File Format":"json", "Template File":'{ "controller":"cntr_IP", "vdu1":"vdu1_IP", "vdu2":"vdu2_IP" }'}]}

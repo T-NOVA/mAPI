@@ -38,5 +38,8 @@
       <rankOrder>ascending</rankOrder>
     </dispatch>
     <uuid></uuid>
+    <nodefilters>
+      <filter>.*</filter>
+    </nodefilters>
   </job>
 </joblist>
