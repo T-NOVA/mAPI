@@ -6,11 +6,18 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 
 ### Version
 
-- 0.1
+- 0.5
 
 ### Changes
 
+#### 0.1
 - VNF Registering Interface created
+
+#### 0.5
+- Lifecycle management interface created
+- mAPI now provides better feedback during execution
+- Keys folder added to store VDUs private key authentication (pem file)
+- test folder contains examples of VNFDs and configuration requests 
 
 ## Requirements
 
@@ -186,9 +193,17 @@ To configure the Middleware API you can use the mAPI.cfg file present in the 'Co
 
 #### authentication
 
-username - username for mAPI northbound interface authentication
+authentication_method - two mechanisms are available, basic authentication and gatekeeper). Gatekeeper is the official authentication mechanism used in T-NOVA, while basic is only username:password authentication. 
 
-password - password for mAPI northbound interface authentication
+username - username for mAPI northbound interface authentication (basic authentication)
+
+password - password for mAPI northbound interface authentication (basic authentication)
+
+gatekeeper_host - Gatekeeper IP Address or DNS name location 
+
+gatekeeper_port - Port where Gatekeeper is listening
+
+service_key - Token assigned to mAPI by Gatekeeper
 
 #### server
 
@@ -202,11 +217,15 @@ folder - folder location of the mAPI software
 
 #### rundeck
 
-host - IP address of the host where Rundeck is running
+host - IP address or DNS name of the host where Rundeck is running
+
+port - Port number used by the Rundeck API
 
 token - authentication token used in Rundeck
 
 project folder - folder location of Rundeck projects folder
+
+TNOVA_user - username associated with the private key, it will be used with the SSH driver to access the VDUs
 
 #### db
 
