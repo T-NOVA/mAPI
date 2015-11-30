@@ -12,6 +12,19 @@ rundeck_port = conf.get_rundeck_port()
 rundeck_token = conf.get_rundeck_token()
 rundeck_project_folder = conf.get_rundeck_project_folder()
 
+def is_job_running(jobId):
+  print "\nChecking if Job is still running"
+  print jobId
+  con = httplib.HTTPConnection(rundeck_host, rundeck_port)
+  headers = ({"Content-Type":"application/json",
+             "X-Rundeck-Auth-Token":"%s" % rundeck_token})
+  con.request('GET', '/api/12/job/'+jobId+'/executions?status=running', headers = headers)
+  response = ET.fromstring(con.getresponse().read())
+  if response.get("count") == '0':
+    return False
+  else:
+    return True
+
 def post_project(file_as_text):
   print "\nProject request which will be upload to Rundeck: \n"
   print file_as_text
@@ -44,8 +57,10 @@ def delete_project(project_url):
   headers = ({"X-Rundeck-Auth-Token" : "%s" % rundeck_token})
   con.request('DELETE', project_url, headers = headers)
   response = con.getresponse()
-  print "\nRundeck response: " + str(response.status)
+  status, msg = response.status, response.read()
+  print "\nRundeck response: " + str(status) +'\n' + str(msg)
   print "\nFinished deleting project from Rundeck\n"
+  return status
 
 def delete_job(job_url):
   print "\nDeleting Job " + job_url + "from Rundeck\n"

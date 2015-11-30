@@ -1,0 +1,11 @@
+{  
+  "event":"start",
+  "vnf-controller":[  
+    "10.0.2.15"
+  ],
+  "parameters":{  
+    "vdu1":[  
+      "10.0.2.15"
+    ]
+  }
+}

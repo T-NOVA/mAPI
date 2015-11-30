@@ -1,6 +1,7 @@
+import xml.etree.cElementTree as ET
 from Database.mapidb import mapiDB
 from Rundeck_Aux.rich_template import enrich_config_template
-from Rundeck_Aux.rundeckconnector import add_node, execute_job, delete_project 
+from Rundeck_Aux.rundeckconnector import add_node, execute_job, delete_project, is_job_running 
 from Config.configuration import Configuration
 import shutil
 import json
@@ -70,11 +71,20 @@ def delete_vnf(vnf_id, vnfm_request_file = None):
         with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/current.json", "w") as json_file:
           jsonfile.write(json_obg)
     event = db.get_event('stop', vnf_id)
-    execute_job(event.jobUrl)
+    response = execute_job(event.jobUrl)
+    response = ET.fromstring(response)
+    while is_job_running(response.find("./execution/job").attrib['id']):
+      print '\nwaiting for job to finish'
     vnf = db.get_VNF(vnf_id)
     # remove project from rundeck
     print "\nStarting Rundeck project removal:"
-    delete_project(vnf.projectUrl)
+    status = delete_project(vnf.projectUrl)
+    if status == '500':
+      for i in range(5):
+        status = delete_project(vnf.projectUrl)
+        if status == '204':
+          continue
+      print '\nError: failed to remove project from Rundeck'
     print "Ok"
     print "\nDeleting VNF files in " + mapi_folder + "VNF_Library/VNF_" + vnf_id + "/ :"
     # remove files from VNF folder

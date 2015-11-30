@@ -54,12 +54,12 @@ def api_registervnf():
     if not check_credentials(user, passwd):
       abort(401)
   try:
-    vnfd = loads(request.body.getvalue())
+    vnfm_req = loads(request.body.getvalue())
     print "\n######## REGISTERING VNF ########\n"
-    print "VNF Id: " + vnfd['id'] + '\n'
+    print "VNF Id: " + vnfm_req['id'] + '\n'
     print "VNF Descriptor: "
-    print vnfd
-    register_vnf(vnfd['id'], vnfd)
+    print vnfm_req
+    register_vnf(vnfm_req['id'], vnfm_req['vnfd'])
     print "\n############## END ##############\n"
   except:
     abort(400)
