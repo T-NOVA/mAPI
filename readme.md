@@ -262,46 +262,71 @@ Because this is just an example some sections remained unchanged:
 
 ## Running Middleware API
 
+The Middleware API needs to run with sudo because some operations are normally limited to superusers.
 To run the Middleware API just type in terminal:
 
- ~/mAPI_folder/python registerinterface.py
+ ~/mAPI_folder/sudo python northboundinterface.py
 
 ### VNF registration example
 
-Bellow you can find an example of a partial VNF Descriptor (with only the lifecycle management related sections):
+Bellow you can find an example of the information that the VNFM sends to the mAPI to register a new VNF. The json file is comprised of the following elements:
+* id - the VNFR Id which identifies the specific VNF instance
+* vnfd - the VNF Descriptor (note: here is shown a partial VNFD with only the lifecycle management related sections):
 
 ```json
 {
-  "id":"vTC3", 
-  "lifecycle_event":{
-    "Driver":"SSH",
-    "Authentication":"private_key.pem",
-    "Authentication_Type":"private key",
-    "VNF_Container":"/home/vtc/container/",
-    "events":[
-      {
-        "Event":"start", 
-        "Command":"service vtc start", 
-        "Template File Format":"json", 
-        "Template File":"{ \"controller\":\"cntr_IP\", \"vdu1\":\"vdu1_IP\", \"vdu2\":\"vdu2_IP\" }"
-      },
-      {
-        "Event":"stop",
-        "Command":"service vtc stop",
-        "Template File Format":"json",
-        "Template File":"{\"controller\":\"cntr_IP\",\"vdu1\":\"vdu1_IP\",\"vdu2\":\"vdu2_IP\"}"
-      },
-      {
-        "Event":"halt",
-        "Command":"service vtc shutoff",
-        "Template File Format":"json",
-        "Template File":"{\"controller\":\"cntr_IP\",\"vdu1\":\"vdu1_IP\",\"vdu2\":\"vdu2_IP\"}"
-      }
-    ]
+  "id":"localvNF",
+  "vnfd": {
+    "lifecycle_event":{
+      "Driver":"SSH",
+      "Authentication":"local.pem",
+      "Authentication_Type":"private key",
+      "VNF_Container":"/home/bsendas/container/",
+      "events":[
+        {
+          "Event":"start",
+          "Command":"python /home/bsendas/local_vnf/start.py",
+          "Template File Format":"json",
+          "Template File":"{ \"controller\":\"get_attr[vdu1,PublicIp]\", \"vdu1\":\"get_attr[vdu1,PublicIp]\", \"vdu2\":\"get_attr[vdu2,PrimaryPrivateIpAddress]\" }"
+        },
+        {
+          "Event":"stop",
+          "Command":"python /home/bsendas/local_vnf/stop.py"
+        },
+        {
+          "Event":"halt",
+          "Command":"python /home/bsendas/local_vnf/halt.py",
+          "Template File Format":"json",
+          "Template File":"{\"controller\":\"get_attr[vdu1,PublicIp]\",\"vdu1\":\"get_attr[vdu1,PublicIp]\",\"vdu2\":\"get_attr[vdu2,PrimaryPrivateIpAddress]\"}"
+        }
+      ]
+    }
   }
 }
 ```
 
 To upload this VNFD to mAPI you can use cURL:
 
-curl -X POST 0.0.0.0:1234/vnf_api/ -u admin:changeme -d @~/mAPI/temp.json -v
+curl -X POST 0.0.0.0:1234/vnf_api/ -u admin:changeme -d @~/mAPI/test/temp_local.json -v
+
+### VNF start event example
+
+Here is shown an example for the VNF initial/start configuration triggerbasing on the registering example shown above. The request file sent by the the VNFM is comprised of the following elements:
+* event - the event this request belongs to
+* vnf_controller - the IP address that the mAPI can use to reach the VNFC that manages and configures the VNF
+* parameters - the list of instantion specific parameters
+
+```json
+{
+  "event":"start",
+  "vnf_controller":["10.0.2.15"],
+  "parameters":{
+    "vdu1_PublicIp":["10.0.2.15"],
+    "vdu2_PrimaryPrivateIpAddress":["10.0.2.20"]
+  }
+}
+```
+
+To trigger the Start command you can use cURL:
+
+curl -X POST 0.0.0.0:1234/vnf_api/localvNF/config/ -u admin:changeme -d @~/mAPI/test/temp_start.json
