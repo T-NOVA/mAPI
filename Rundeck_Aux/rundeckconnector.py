@@ -76,7 +76,7 @@ def create_project(vnf_id, ems):
   project_request['name'] = vnf_id
   if ems['Driver'] == 'SSH':
     if ems['Authentication_Type'] == 'private key':
-      project_request['config']['project.ssh-keypath'] = mapi_folder + 'keys/' + ems['Authentication']
+      project_request['config']['project.ssh-keypath'] = mapi_folder + 'keys/' + vnf_id + '.pem'
   response = post_project(dumps(project_request))
   print "\nFinished Creating project in Rundeck\n"
   return response

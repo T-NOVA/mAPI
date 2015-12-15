@@ -5,6 +5,7 @@
       "Driver":"SSH",
       "Authentication":"local.pem",
       "Authentication_Type":"private key",
+      "Authentication_Username":"ubuntu",
       "VNF_Container":"/home/bsendas/container/",
       "events":[
         {

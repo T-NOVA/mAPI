@@ -13,10 +13,11 @@ class VNF(Base):
 
   id = Column(String(64), primary_key = True)
   projectUrl = Column(String(100))
+  username = Column(String(100))
 #  events = relationship("Event", backref = 'VNFs', cascade = "all,delete")
 
   def __repr__(self):
-    return "<VNF (VNF Id='%s', Project URL='%s')>" %(self.id, self.projectUrl)
+    return "<VNF (VNF Id='%s', Project URL='%s', VNF Username='%s')>" %(self.id, self.projectUrl, self.username)
 
 class Event(Base):
   __tablename__ = 'Events'

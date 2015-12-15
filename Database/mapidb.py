@@ -16,8 +16,8 @@ class mapiDB(object):
   def __init__(self):
     self.session = create_session()
 
-  def add_VNF(self, vnf_id, project_url):
-    self.session.add(VNF(id = vnf_id, projectUrl = project_url))
+  def add_VNF(self, vnf_id, project_url, username):
+    self.session.add(VNF(id = vnf_id, projectUrl = project_url, username = username))
     self.session.commit()
     return self.session.query(VNF).filter_by(id = vnf_id).first()
 

@@ -7,7 +7,7 @@ import shutil
 import json
 
 conf = Configuration()
-TNOVA_user = conf.get_TNOVA_user()
+##TNOVA_user = conf.get_TNOVA_user()
 mapi_folder = conf.get_mAPI_folder()
 db = mapiDB()
 
@@ -33,9 +33,9 @@ def initial_configuration(vnf_id, vnfm_request_file):
           json_file.write(json.dumps(json_obj))
     print "\nVNF Controller info: \n"
     print "VNF Controller : " + vnfm_request_file['vnf_controller'][0] + '\n'
-    print "VM username: " + TNOVA_user + '\n'
+    print "VM username: " + event.vnf.username + '\n'
     # add node to rundeck
-    add_node(vnf_id, vnfm_request_file['vnf_controller'][0], TNOVA_user)
+    add_node(vnf_id, vnfm_request_file['vnf_controller'][0], event.vnf.username)
     # trigger job execution
     execute_job(event.jobUrl)
     print "End of VNF initial configuration\n"
