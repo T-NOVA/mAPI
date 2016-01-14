@@ -6,7 +6,7 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 
 ### Version
 
-- 0.5
+- 0.61
 
 ### Changes
 
@@ -21,6 +21,11 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 
 #### 0.6
 - Updated VNF register: username and private key are now uploaded in the VNFD
+
+#### 0.61
+- Added support for the new version of the VNF descriptor
+- Corrected the README.MD
+- Correct a bug when storing the pem key
 
 ## Requirements
 
@@ -65,7 +70,7 @@ This guide was tested in Ubuntu 14.04 LTS
 
 It is necessary to give authorization to create projects using the API
 
-The file admin.aclpolicy in /etc/rundeck/ should look like this
+The file apitoken.aclpolicy in /etc/rundeck/ should look like this
 
 ```
 description: API project level access control
@@ -118,7 +123,7 @@ by:
   group: api_token_group
 ```
 
-The file apitoken.aclpolicy in /etc/rundeck/ should look like this:
+The file admin.aclpolicy in /etc/rundeck/ should look like this:
 
 ```
 description: Admin, all access.
@@ -280,25 +285,22 @@ Bellow you can find an example of the information that the VNFM sends to the mAP
 {
   "id":"localvNF",
   "vnfd": {
-    "lifecycle_event":{
-      "Driver":"SSH",
-      "Authentication":"-----BEGIN RSA PRIVATE KEY-----MIIEpAIBAAKCAQEA0QtIBRduKsYTmabyMHi5FoqZOrEmMSnoTLtkRBYTmkICqsYaHyiHyvAzFKBbg81ze9KlUo8GhDM71BRxpkswsvmLHRHwTGfauPWUNszb0ZaIK+zqOolVUDTa8x5wXZ1/SsJeUzYZrYdH8YNUhpLIk4XLZoyJbxfJ+40lRjtARV+VJGlEgGU74cCoj1gy9OafhvfCsGxaA4GygQa3LkWGYt1KR8Y1lCa7yaq3apJBCRxvpQ3Mdr8v9WaCaJ3suqoRaisvxwIWs71VI8UkNhQ6ts6ki2mQKSr2V7/mIWfpu9Yde93EFt/r417FBpmCqT/UkLlvahvtjTotXcnL84/mEwIDAQABAoIBAQDKhjh3HlUQQaiZkyFOjpca3JpJP3k15lj1hhNE13KUX2GAG78Q8s5kcUO7twQSdIhurQyYKJLyn0RWWpwktPHwY01Ak7GQBInl6Z53XQ+WRVWV4Miof4bU1vBM2++W8tBxGFAUI/TKpqavuEG6wxhpvBTsPDmmFJEOEZfMK/k/evI7D4TcoHfz6pZYoea3Qv7THoJ4mOwDwRmJMztm/hSrHKSz3lJ9xlyAkfnmFanwlF1IzNHfbHOyGrRaMrRlGUVhDJUP9R1l57n3rHv8wgPizGLU7ot1H0WRkYqd58Imq76sOQ1PEQU0vbW+jCdQt+FSAqu5dWK+nG5R07Oqc1ahAoGBAPpOGlZZYl3yPj0KGJRSFcaWflHzTrVTS28zSNfydsSL3wSWmnHup+HJg0gteOlW1abiomDMls5PkuHES8lBOBWMZlnwOD6oVDR2jVi6Ck1zsCA51ykfHwL40jItCktoER4+IEW9M/B8jugKCmoOhHoVXPMLMs/X5gorwTepTtfjAoGBANXM2rvuERfjnwFiABMrpyksrIbXZf+AQ3+j9SXBYT40SX0kK3wOEIIh/whX4otbTmrPf7HJhmGxo34LUADXP+vdws+SOob0QCz9Ep8qGgccmNG38PtwsFqysAeWWO7hL6w4OLpI23cQ877b3k/sVFhjxkLFGYXQIuZS/potEzARAoGAapqpDO20v15Us5qBLWpoa9PcqPp/Iyr+jbXB6HcTrlIEAehCjxOd3MP+bdcwD/EzvYf4sFFySRwK6qy3uldUk5jgXp241rbKZi23tXpGuQX0lUUNJi5i/tkKbORR5hvEbqT3CbyzSlFCbAEavmDAe15t3/V9BphlGR/ZguNQ+RECgYB2+OD7VPX0GjkgNt2dzVve4Lo86t4aeNCW1bEUSnEHgWcnmRoNlXIASFS32tf4/l07uK3xTBhYgtZczIS/gwhSA3xlr5ScBo0zu7xCD9aeAH7VrQsPkFzCi87C2hoxC+RQbJS8rNBbiHZqzcT/Kp6g9RydiTqzqOfSzXpaZxzXUQKBgQC+q/lIN8YfNbx+sC0cH5GdK7fTmEVUvx93rJM8iCknWU6mL56e0ddeZD8f2SHJhHyoEsH7v0JFHYasXDb7s7b4JNm10RLD/IbOaOBiNv4yynS9boLjvHqIWlbpNaMdd0SBjNghNOdHerF338Dd9Hdwl3o5QHnp/4kjZHPI2Jc+rw==-----END RSA PRIVATE KEY-----",
-      "Authentication_Type":"private key",
-      "Authentication_Username":"ubuntu",
-      "VNF_Container":"/home/bsendas/container/",
+    "vnf_lifecycle_events":{
+      "driver":"SSH",
+      "authentication":"-----BEGIN RSA PRIVATE KEY-----MIIEpAIBAAKCAQEA0QtIBRduKsYTmabyMHi5FoqZOrEmMSnoTLtkRBYTmkICqsYaHyiHyvAzFKBbg81ze9KlUo8GhDM71BRxpkswsvmLHRHwTGfauPWUNszb0ZaIK+zqOolVUDTa8x5wXZ1/SsJeUzYZrYdH8YNUhpLIk4XLZoyJbxfJ+40lRjtARV+VJGlEgGU74cCoj1gy9OafhvfCsGxaA4GygQa3LkWGYt1KR8Y1lCa7yaq3apJBCRxvpQ3Mdr8v9WaCaJ3suqoRaisvxwIWs71VI8UkNhQ6ts6ki2mQKSr2V7/mIWfpu9Yde93EFt/r417FBpmCqT/UkLlvahvtjTotXcnL84/mEwIDAQABAoIBAQDKhjh3HlUQQaiZkyFOjpca3JpJP3k15lj1hhNE13KUX2GAG78Q8s5kcUO7twQSdIhurQyYKJLyn0RWWpwktPHwY01Ak7GQBInl6Z53XQ+WRVWV4Miof4bU1vBM2++W8tBxGFAUI/TKpqavuEG6wxhpvBTsPDmmFJEOEZfMK/k/evI7D4TcoHfz6pZYoea3Qv7THoJ4mOwDwRmJMztm/hSrHKSz3lJ9xlyAkfnmFanwlF1IzNHfbHOyGrRaMrRlGUVhDJUP9R1l57n3rHv8wgPizGLU7ot1H0WRkYqd58Imq76sOQ1PEQU0vbW+jCdQt+FSAqu5dWK+nG5R07Oqc1ahAoGBAPpOGlZZYl3yPj0KGJRSFcaWflHzTrVTS28zSNfydsSL3wSWmnHup+HJg0gteOlW1abiomDMls5PkuHES8lBOBWMZlnwOD6oVDR2jVi6Ck1zsCA51ykfHwL40jItCktoER4+IEW9M/B8jugKCmoOhHoVXPMLMs/X5gorwTepTtfjAoGBANXM2rvuERfjnwFiABMrpyksrIbXZf+AQ3+j9SXBYT40SX0kK3wOEIIh/whX4otbTmrPf7HJhmGxo34LUADXP+vdws+SOob0QCz9Ep8qGgccmNG38PtwsFqysAeWWO7hL6w4OLpI23cQ877b3k/sVFhjxkLFGYXQIuZS/potEzARAoGAapqpDO20v15Us5qBLWpoa9PcqPp/Iyr+jbXB6HcTrlIEAehCjxOd3MP+bdcwD/EzvYf4sFFySRwK6qy3uldUk5jgXp241rbKZi23tXpGuQX0lUUNJi5i/tkKbORR5hvEbqT3CbyzSlFCbAEavmDAe15t3/V9BphlGR/ZguNQ+RECgYB2+OD7VPX0GjkgNt2dzVve4Lo86t4aeNCW1bEUSnEHgWcnmRoNlXIASFS32tf4/l07uK3xTBhYgtZczIS/gwhSA3xlr5ScBo0zu7xCD9aeAH7VrQsPkFzCi87C2hoxC+RQbJS8rNBbiHZqzcT/Kp6g9RydiTqzqOfSzXpaZxzXUQKBgQC+q/lIN8YfNbx+sC0cH5GdK7fTmEVUvx93rJM8iCknWU6mL56e0ddeZD8f2SHJhHyoEsH7v0JFHYasXDb7s7b4JNm10RLD/IbOaOBiNv4yynS9boLjvHqIWlbpNaMdd0SBjNghNOdHerF338Dd9Hdwl3o5QHnp/4kjZHPI2Jc+rw==-----END RSA PRIVATE KEY-----",
+      "authentication_type":"private key",
+      "authentication_username":"ubuntu",
+      "vnf_container":"/home/bsendas/container/",
       "events":[
-        {
-          "Event":"start",
+        "start":{
           "Command":"python /home/bsendas/local_vnf/start.py",
           "Template File Format":"json",
           "Template File":"{ \"controller\":\"get_attr[vdu1,PublicIp]\", \"vdu1\":\"get_attr[vdu1,PublicIp]\", \"vdu2\":\"get_attr[vdu2,PrimaryPrivateIpAddress]\" }"
         },
-        {
-          "Event":"stop",
+        "stop":{
           "Command":"python /home/bsendas/local_vnf/stop.py"
         },
-        {
-          "Event":"halt",
+        "halt":{
           "Command":"python /home/bsendas/local_vnf/halt.py",
           "Template File Format":"json",
           "Template File":"{\"controller\":\"get_attr[vdu1,PublicIp]\",\"vdu1\":\"get_attr[vdu1,PublicIp]\",\"vdu2\":\"get_attr[vdu2,PrimaryPrivateIpAddress]\"}"

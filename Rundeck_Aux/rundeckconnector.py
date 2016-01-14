@@ -74,8 +74,8 @@ def create_project(vnf_id, ems):
   with open(mapi_folder + 'Rundeck_Aux/project_request.json', 'r') as f:
     project_request = loads(f.read())
   project_request['name'] = vnf_id
-  if ems['Driver'] == 'SSH':
-    if ems['Authentication_Type'] == 'private key':
+  if ems['driver'] == 'SSH':
+    if ems['authentication_type'] == 'private key':
       project_request['config']['project.ssh-keypath'] = mapi_folder + 'keys/' + vnf_id + '.pem'
   response = post_project(dumps(project_request))
   print "\nFinished Creating project in Rundeck\n"
@@ -97,18 +97,18 @@ def create_job(vnf_id, job):
   print job
   tree = ET.parse(mapi_folder + 'Rundeck_Aux/job_template.xml')
   root = tree.getroot()
-  if "Template File" in job:
+  if "template_file" in job:
     for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
       if entry.attrib['key'] == 'destinationPath':
         entry.set('value',job["VNF Container"])
       elif entry.attrib['key'] == 'sourcePath':
-        entry.set('value',job["VNF Folder"] + 'current' + '.' + job["Template File Format"])
+        entry.set('value',job["VNF Folder"] + 'current' + '.' + job["template_file_format"])
   else:
     for command in root.findall('./job/sequence/command'):
       if command.find('node-step-plugin') is not None:
         root.find('./job/sequence').remove(command)
-  if "Command" in job:
-    root.find('./job/sequence/command/exec').text = job["Command"]
+  if "command" in job:
+    root.find('./job/sequence/command/exec').text = job["command"]
     root.find('./job/context/project').text = vnf_id
   else:
     for command in root.findall('./job/sequence/command'):
