@@ -291,7 +291,7 @@ Bellow you can find an example of the information that the VNFM sends to the mAP
       "authentication_type":"private key",
       "authentication_username":"ubuntu",
       "vnf_container":"/home/bsendas/container/",
-      "events":[
+      "events":{
         "start":{
           "Command":"python /home/bsendas/local_vnf/start.py",
           "Template File Format":"json",
@@ -305,7 +305,7 @@ Bellow you can find an example of the information that the VNFM sends to the mAP
           "Template File Format":"json",
           "Template File":"{\"controller\":\"get_attr[vdu1,PublicIp]\",\"vdu1\":\"get_attr[vdu1,PublicIp]\",\"vdu2\":\"get_attr[vdu2,PrimaryPrivateIpAddress]\"}"
         }
-      ]
+      }
     }
   }
 }
