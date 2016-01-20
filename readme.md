@@ -6,7 +6,7 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 
 ### Version
 
-- 0.61
+- 0.8
 
 ### Changes
 
@@ -26,6 +26,12 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 - Added support for the new version of the VNF descriptor
 - Corrected the README.MD
 - Correct a bug when storing the pem key
+
+#### 0.8
+- Integration with T-NOVA VNFM validated
+- Created the mAPI.cfg.sample to avoid overwriting the configuration when updating the Middleware API
+- Added support for the new version of the VNF descriptor
+- Corrected a bug with the VNF validation
 
 ## Requirements
 

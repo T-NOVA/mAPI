@@ -11,17 +11,17 @@
         "start": { 
           "command": "service xxx start", 
           "template_file_format": "json", 
-          "template_file": "{ \"controller\":\"cntr_IP\", \"vdu1\":\"vdu1_IP\", \"vdu2\":\"vdu2_IP\" }"
+          "template_file": "{ \"vdu1\":\"get_attr[vdu0:vnfc0:data0,ip]\", \"vdu2\":\"get_attr[vdu1:vnfc0:data0,ip]\" }"
         }, 
         "stop": {
           "command": "service vtc stop", 
           "template_file_format": "json", 
-          "template_file": "{\"controller\":\"cntr_IP\",\"vdu1\":\"vdu1_IP\",\"vdu2\":\"vdu2_IP\"}"
+          "template_file": "{\"vdu1\":\"get_attr[vdu0:vnfc0:mgnt0,ip]\",\"vdu2\":\"get_attr[vdu1:vnfc0:data0,ip]\"}"
         }, 
         "restart": {
           "command": "service vtc shutoff", 
           "template_file_format": "json", 
-          "template_file": "{\"controller\":\"cntr_IP\",\"vdu1\":\"vdu1_IP\",\"vdu2\":\"vdu2_IP\"}"
+          "template_file": "{\"vdu1\":\"get_attr[vdu0:vnfc0:data0,ip]\",\"vdu2\":\"get_attr[vdu1:vnfc0:data0,ip]\"}"
         }		  
       }
     }

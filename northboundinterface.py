@@ -7,7 +7,6 @@ from Database.mapidb import mapiDB
 import httplib
 
 conf = Configuration()
-db = mapiDB()
 auth_method = conf.get_authentication_method()
 if auth_method == 'gatekeeper':
   gatekeeper_host = conf.get_gk_host()
@@ -18,6 +17,7 @@ if str(auth_method) == 'basic':
   password = conf.get_password()
 
 def validate_VNF(vnf_id):
+  db = mapiDB()
   if db.get_VNF(str(vnf_id)) == None:
     return False
   else:

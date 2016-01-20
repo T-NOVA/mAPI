@@ -32,10 +32,10 @@ def initial_configuration(vnf_id, vnfm_request_file):
         with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/current.json", "w") as json_file:
           json_file.write(json.dumps(json_obj))
     print "\nVNF Controller info: \n"
-    print "VNF Controller : " + vnfm_request_file['vnf_controller'][0] + '\n'
+    print "VNF Controller : " + vnfm_request_file['vnf_controller'] + '\n'
     print "VM username: " + event.vnf.username + '\n'
     # add node to rundeck
-    add_node(vnf_id, vnfm_request_file['vnf_controller'][0], event.vnf.username)
+    add_node(vnf_id, vnfm_request_file['vnf_controller'], event.vnf.username)
     # trigger job execution
     execute_job(event.jobUrl)
     print "End of VNF initial configuration\n"
