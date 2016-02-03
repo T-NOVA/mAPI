@@ -1,0 +1,85 @@
+<project name="http-upload" default="run" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+  <!-- property name="lib.dir" value="lib_comp"/ -->
+  <property name="lib.dir" value="lib"/>
+  <!--property name="lib.local.dir" value="lib_local"/ -->
+
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+
+    <target name="clean">
+        <delete dir="build/" />
+    	<delete dir="dist/" />
+    </target>
+
+	 <target name="init">
+	 	<mkdir dir="build"/>
+	 	<mkdir dir="build/lib"/>
+	 	<mkdir dir="dist"/>
+	 </target>
+
+   <!-- =================================
+         target: resolve
+        ================================= -->
+   <target name="resolve" description="--> retreive dependencies with ivy">
+       <ivy:resolve transitive="false"/>
+       <ivy:retrieve/>
+       <!-- ivy:report todir="build/ivy-report" graph="true"/ -->
+   </target>
+
+    <target name="compile"  depends="clean, init, resolve">
+        <javac srcdir="src" destdir="build"  classpathref="classpath">
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+    	<copy todir="build/lib">
+        <fileset dir="lib" includes="google-http-client-1.20.0.jar" />
+        <fileset dir="lib" includes="cxf-rt-frontend-jaxrs-3.1.4.jar" />
+        <fileset dir="lib" includes="cxf-rt-rs-client-3.1.4.jar" />
+        <fileset dir="lib" includes="cxf-core-3.1.4.jar" />
+        <fileset dir="lib" includes="javax.ws.rs-api-2.0.1.jar" />
+        <fileset dir="lib" includes="cxf-rt-transports-http-3.1.4.jar" />
+        <fileset dir="lib" includes="jersey-common-2.9.jar" />
+        <fileset dir="lib" includes="hk2-utils-2.3.0.jar" />
+
+
+        <fileset dir="lib_local" includes="hk2-api-2.3.0.jar" />
+        <fileset dir="lib_local" includes="hk2-locator-2.3.0.jar" />
+        <!-- fileset dir="lib_local" includes="jersey-client-2.22.1.jar" / -->
+        <fileset dir="lib_local" includes="jersey-guava-2.7.jar" />
+        <fileset dir="lib_local" includes="javax.inject-2.3.0.jar" />
+
+
+    	</copy>
+        <jar destfile="./dist/rundeck-httpupload-plugin-1.5.jar" basedir="./build">
+            <manifest>
+              <attribute name="Rundeck-Plugin-Version" value="1.5"/>
+              <attribute name="Rundeck-Plugin-Archive" value="true"/>
+              <attribute name="Rundeck-Plugin-File-Version" value="2.6.4"/>
+              <attribute name="Rundeck-Plugin-Author" value="Davide Rabboni"/>
+              <attribute name="Rundeck-Plugin-URL" value="http://rundeck.org"/>
+              <attribute name="Rundeck-Plugin-BuildDate" value="Fri Nov 23 23:44:31 UTC 2015"/>
+              <attribute name="Rundeck-Plugin-Classnames" value="eu.tnova.rundeck.plugin.node.HttpUploadNodeStep"/>
+              <attribute name="Rundeck-Plugin-Name" value="HttpUploadNodeStep"/>
+              <attribute name="Rundeck-Plugin-Description" value="Make Http POST, PUT with file in attach"/>
+              <attribute name="Rundeck-Plugin-Libs" value="lib/cxf-core-3.1.4.jar
+              lib/cxf-rt-frontend-jaxrs-3.1.4.jar
+              lib/cxf-rt-rs-client-3.1.4.jar
+              lib/cxf-rt-transports-http-3.1.4.jar
+              lib/google-http-client-1.20.0.jar
+              lib/hk2-api-2.3.0.jar
+              lib/hk2-locator-2.3.0.jar
+              lib/hk2-utils-2.3.0.jar
+              lib/javax.inject-2.3.0.jar
+              lib/javax.ws.rs-api-2.0.1.jar
+              lib/jersey-common-2.9.jar
+              lib/jersey-guava-2.7.jar"  />
+
+
+            </manifest>
+        </jar>
+    </target>
+
+</project>
