@@ -20,7 +20,7 @@ def register_vnf(vnf_id, vnf_descriptor):
     if not path.exists(folder):
       makedirs(folder)
     print "ok"
-    if vnf_descriptor['vnf_lifecycle_events']['authentication_type'] == 'private key':
+    if vnf_descriptor['vnf_lifecycle_events']['authentication_type'] == 'PubKeyAuthentication':
       print "\nAuthentication with private key, saving key:"
       keyFixer(mapi_folder, vnf_id, vnf_descriptor['vnf_lifecycle_events']['authentication']).parseKey()
 #      with open(mapi_folder + "keys/" + vnf_id + ".pem", 'w') as pemFile:

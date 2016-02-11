@@ -74,8 +74,8 @@ def create_project(vnf_id, ems):
   with open(mapi_folder + 'Rundeck_Aux/project_request.json', 'r') as f:
     project_request = loads(f.read())
   project_request['name'] = vnf_id
-  if ems['driver'] == 'SSH':
-    if ems['authentication_type'] == 'private key':
+  if ems['driver'].lower() == 'ssh':
+    if ems['authentication_type'] == 'PubKeyAuthentication':
       project_request['config']['project.ssh-keypath'] = mapi_folder + 'keys/' + vnf_id + '.pem'
   response = post_project(dumps(project_request))
   print "\nFinished Creating project in Rundeck\n"
