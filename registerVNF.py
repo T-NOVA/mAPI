@@ -46,9 +46,9 @@ def register_vnf(vnf_id, vnf_descriptor):
         #write templates to files
         print "\nSaving template files: " + mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.json'
         if event.has_key("template_file_format"):
-          if event["template_file_format"] == 'xml':
+          if event["template_file_format"].lower() == 'xml':
             fromstring(job["template_file"]).write(mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.xml', encoding="UTF-8", xml_declaration=True)
-          elif event["template_file_format"] == 'json':
+          elif event["template_file_format"].lower() == 'json':
             with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.json', 'w') as jsonfile:
               jsonfile.write(event["template_file"])
         print "ok"

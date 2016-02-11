@@ -4,14 +4,24 @@
     <loglevel>INFO</loglevel>
     <sequence keepgoing="false" strategy="node-first">
       <command>
-        <exec>/home/ubuntu/halt.sh</exec>
+        <description>copy configuration file to vnf</description>
+        <node-step-plugin type="copyfile">
+          <configuration>
+            <entry key="destinationPath" value="/home/ubuntu/" />
+            <entry key="echo" value="true" />
+            <entry key="sourcePath" value="/home/vnfm/wp5/WP5/mAPI/VNF_Library/VNF_56bcc4457bd39214c5000000/current.JSON" />
+          </configuration>
+        </node-step-plugin>
+      </command>
+      <command>
+        <exec>/home/ubuntu/stop.sh</exec>
         <description>run vnf command</description>
       </command>
     </sequence>
     <description>T-NOVA middleware API</description>
-    <name>halt</name>
+    <name>stop</name>
     <context>
-      <project>56bc8f687bd3921482000001</project>
+      <project>56bcc4457bd39214c5000000</project>
     </context>
     <dispatch>
       <threadcount>1</threadcount>

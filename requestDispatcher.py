@@ -64,12 +64,13 @@ def update_configuration(vnf_id, vnfm_request_file):
 
 def delete_vnf(vnf_id, vnfm_request_file = None):
   try:
-    if vnfm_request_file.has_key('parameters'):
-      print "the stop operation has request file"
-      with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/" + vnfm_request_file["event"] + ".json", "r") as template:
-        json_obj = enrich_config_template(vnfm_request_file['parameters'], json.loads(template.read()))
-        with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/current.json", "w") as json_file:
-          json_file.write(json.dumps(json_obj))
+    if vnfm_request_file:
+      if vnfm_request_file.has_key('parameters'):
+        print "the stop operation has request file"
+        with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/" + vnfm_request_file["event"] + ".json", "r") as template:
+          json_obj = enrich_config_template(vnfm_request_file['parameters'], json.loads(template.read()))
+          with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/current.json", "w") as json_file:
+            json_file.write(json.dumps(json_obj))
     event = db.get_event('stop', vnf_id)
     response = execute_job(event.jobUrl)
     response = ET.fromstring(response)

@@ -102,7 +102,7 @@ def create_job(vnf_id, job):
       if entry.attrib['key'] == 'destinationPath':
         entry.set('value',job["VNF Container"])
       elif entry.attrib['key'] == 'sourcePath':
-        entry.set('value',job["VNF Folder"] + 'current' + '.' + job["template_file_format"])
+        entry.set('value',job["VNF Folder"] + 'current' + '.' + job["template_file_format"].lower())
   else:
     for command in root.findall('./job/sequence/command'):
       if command.find('node-step-plugin') is not None:
