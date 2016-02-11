@@ -9,7 +9,7 @@ def enrich_config_template(vnfm_request, template):
   for key in vnfm_request.keys():
     print "Key in VNF Manager request: " + key
     for item in template.iteritems():
-      if item[1] == "get_attr"+str([elem.encode('ascii','ignore') for elem in key.split('#')]).translate(None,"' "):
+      if item[1].replace(" ","") == "get_attr"+str([elem.encode('ascii','ignore') for elem in key.split('#')]).translate(None,"' "):
         print "Found Key"
         template.update({item[0]:vnfm_request.get(key)})
   print "\nConfiguration file complete!"

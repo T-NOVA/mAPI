@@ -6,7 +6,7 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 
 ### Version
 
-- 0.81
+- 0.82
 
 ### Changes
 
@@ -35,6 +35,10 @@ The Middleware API component enables lifecycle management of Virtual Network Fun
 
 #### 0.81
 - Updated expected values for some VNFD parameters 
+
+#### 0.82
+- Several bugs corrected
+- Integrated with VNFM
 
 ## Requirements
 

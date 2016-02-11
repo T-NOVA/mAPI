@@ -4,24 +4,14 @@
     <loglevel>INFO</loglevel>
     <sequence keepgoing="false" strategy="node-first">
       <command>
-        <description>copy configuration file to vnf</description>
-        <node-step-plugin type="copyfile">
-          <configuration>
-            <entry key="destinationPath" value="/home/ubuntu/vnf_container/" />
-            <entry key="echo" value="true" />
-            <entry key="sourcePath" value="/home/bsendas/wp5/WP5/mAPI/VNF_Library/VNF_regTest/current.json" />
-          </configuration>
-        </node-step-plugin>
-      </command>
-      <command>
-        <exec>service vtc shutoff</exec>
+        <exec>/home/ubuntu/halt.sh</exec>
         <description>run vnf command</description>
       </command>
     </sequence>
     <description>T-NOVA middleware API</description>
-    <name>restart</name>
+    <name>halt</name>
     <context>
-      <project>regTest</project>
+      <project>56bc8f687bd3921482000001</project>
     </context>
     <dispatch>
       <threadcount>1</threadcount>

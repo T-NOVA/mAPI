@@ -1,0 +1,518 @@
+basic authentication
+admin changeme
+
+######## DELETE VNF CONFIGURATION API ########
+
+VNF Validation: 
+Ok
+
+
+Starting VNF removal workflow
+
+
+Executing job in Rundeck
+
+Job url: http://10.10.1.67:4440/api/15/job/1520a27a-929b-4222-92cb-29724368c3e0
+
+Finished executing job in Rundeck
+
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+waiting for job to finish
+
+Checking if Job is still running
+1520a27a-929b-4222-92cb-29724368c3e0
+
+Starting Rundeck project removal:
+
+Deleting project from Rundeck
+
+Project URL: http://10.10.1.67:4440/api/15/project/56a665767bd3921022000002
+
+Rundeck response: 204
+
+
+Finished deleting project from Rundeck
+
+Ok
+
+Deleting VNF files in /home/vnfm/wp5/WP5/mAPI/VNF_Library/VNF_56a665767bd3921022000002/ :
+Ok
+
+Delete VNF registry:
+Ok
+
+End of VNF removal workflow
+
+
+############## END ##############
+
+basic authentication method
+admin changeme
+
+######## REGISTERING VNF ########
+
+VNF Id: 56ac1cdb7bd3921279000000
+
+VNF Descriptor: 
+{u'id': u'56ac1cdb7bd3921279000000', u'vnfd': {u'provider_id': 4, u'vdu': [{u'resource_requirements': {u'network_interface_bandwidth_unit': u'', u'hypervisor_parameters': {u'version': u'10002|12001|2.6.32-358.el6.x86_64', u'type': u'QEMU-KVM'}, u'memory_unit': u'GB', u'network_interface_card_capabilities': {u'SR-IOV': True, u'mirroring': False}, u'storage': {u'size_unit': u'GB', u'persistence': False, u'size': 80}, u'network_interface_bandwidth': u'', u'platform_pcie_parameters': {u'SR-IOV': True, u'device_pass_through': True}, u'vcpus': 6, u'vswitch_capabilities': {u'version': u'2.0', u'type': u'ovs', u'overlay_tunnel': u'GRE'}, u'data_processing_acceleration_library': u'', u'memory': 8, u'memory_parameters': {u'large_pages_required': False, u'numa_allocation_policy': u''}, u'cpu_support_accelerator': u'AES-NI'}, u'alias': u'pfsense', u'vm_image_format': u'raw', u'networking_resources': u'', u'scale_in_out': {u'minimum': 1, u'maximum': 1}, u'vm_image': u'http://83.212.108.105:8080/NFS/files/4-pfsense.img', u'connection_points': [{u'vlink_ref': u'vl0', u'id': u'cp0'}, {u'vlink_ref': u'vl1', u'id': u'cp1'}, {u'vlink_ref': u'vl2', u'id': u'cp2'}], u'monitoring_parameters': [{u'metric': u'availability', u'unit': u'%', u'desc': u'Availability'}, {u'metric': u'cpu_usage', u'unit': u'%', u'desc': u'CPU Usage'}, {u'metric': u'memory_usage', u'unit': u'%', u'desc': u'Memory Usage'}, {u'metric': u'memory_used', u'unit': u'MB', u'desc': u'Memory Used'}, {u'metric': u'memory_free', u'unit': u'MB', u'desc': u'Free Memory'}, {u'metric': u'disk_io', u'unit': u'MB/sec', u'desc': u'Disk IO'}, {u'metric': u'disk_free', u'unit': u'GB', u'desc': u'Available Disk Space'}, {u'metric': u'bps_in', u'unit': u'Mbps', u'desc': u'Incoming Bandwidth'}, {u'metric': u'bps_out', u'unit': u'Mbps', u'desc': u'Outgoing Bandwidth'}], u'vm_image_md5': u'2345094b3b92832abb35162a61f6aa03', u'id': u'vdu0'}, {u'resource_requirements': {u'network_interface_bandwidth_unit': u'', u'hypervisor_parameters': {u'version': u'10002|12001|2.6.32-358.el6.x86_64', u'type': u'QEMU-KVM'}, u'memory_unit': u'GB', u'network_interface_card_capabilities': {u'SR-IOV': True, u'mirroring': False}, u'storage': {u'size_unit': u'GB', u'persistence': False, u'size': 60}, u'network_interface_bandwidth': u'', u'platform_pcie_parameters': {u'SR-IOV': True, u'device_pass_through': True}, u'vcpus': 4, u'vswitch_capabilities': {u'version': u'2.0', u'type': u'ovs', u'overlay_tunnel': u'GRE'}, u'data_processing_acceleration_library': u'', u'memory': 4, u'memory_parameters': {u'large_pages_required': False, u'numa_allocation_policy': u''}, u'cpu_support_accelerator': u'AES-NI'}, u'alias': u'pfsense', u'vm_image_format': u'raw', u'networking_resources': u'', u'scale_in_out': {u'minimum': 1, u'maximum': 1}, u'vm_image': u'http://83.212.108.105:8080/NFS/files/4-pfsense.img', u'connection_points': [{u'vlink_ref': u'vl3', u'id': u'cp3'}, {u'vlink_ref': u'vl4', u'id': u'cp4'}, {u'vlink_ref': u'vl5', u'id': u'cp5'}], u'monitoring_parameters': [{u'metric': u'availability', u'unit': u'%', u'desc': u'Availability'}, {u'metric': u'cpu_usage', u'unit': u'%', u'desc': u'CPU Usage'}, {u'metric': u'memory_usage', u'unit': u'%', u'desc': u'Memory Usage'}, {u'metric': u'memory_used', u'unit': u'MB', u'desc': u'Memory Used'}, {u'metric': u'memory_free', u'unit': u'MB', u'desc': u'Free Memory'}, {u'metric': u'disk_io', u'unit': u'MB/sec', u'desc': u'Disk IO'}, {u'metric': u'disk_free', u'unit': u'GB', u'desc': u'Available Disk Space'}, {u'metric': u'bps_in', u'unit': u'Mbps', u'desc': u'Incoming Bandwidth'}, {u'metric': u'bps_out', u'unit': u'Mbps', u'desc': u'Outgoing Bandwidth'}], u'vm_image_md5': u'2345094b3b92832abb35162a61f6aa03', u'id': u'vdu1'}], u'name': u'pfSense Firewall', u'created_at': u'2016-01-29T04:44:22Z', u'modified_at': u'2016-01-29T04:44:22Z', u'vlinks': [{u'leaf_requirement': u'Unlimeted', u'connectivity_type': u'E-LINE', u'vdu_reference': [u'vdu0'], u'alias': u'management', u'connection_points_reference': [u'cp0'], u'access': True, u'external_access': True, u'root_requirement': u'Unlimeted', u'dhcp': True, u'id': u'vl0', u'qos': u''}, {u'leaf_requirement': u'Unlimeted', u'connectivity_type': u'E-LINE', u'vdu_reference': [u'vdu0'], u'alias': u'data_in', u'connection_points_reference': [u'cp1'], u'access': False, u'external_access': True, u'root_requirement': u'Unlimeted', u'dhcp': False, u'id': u'vl1', u'qos': u''}, {u'leaf_requirement': u'Unlimeted', u'connectivity_type': u'E-LINE', u'vdu_reference': [u'vdu0'], u'alias': u'data_out', u'connection_points_reference': [u'cp2'], u'access': False, u'external_access': True, u'root_requirement': u'Unlimeted', u'dhcp': False, u'id': u'vl2', u'qos': u''}, {u'leaf_requirement': u'Unlimeted', u'connectivity_type': u'E-LINE', u'vdu_reference': [u'vdu1'], u'alias': u'management', u'connection_points_reference': [u'cp3'], u'access': True, u'external_access': True, u'root_requirement': u'Unlimeted', u'dhcp': True, u'id': u'vl3', u'qos': u''}, {u'leaf_requirement': u'Unlimeted', u'connectivity_type': u'E-LINE', u'vdu_reference': [u'vdu1'], u'alias': u'data_in', u'connection_points_reference': [u'cp4'], u'access': False, u'external_access': True, u'root_requirement': u'Unlimeted', u'dhcp': False, u'id': u'vl4', u'qos': u''}, {u'leaf_requirement': u'Unlimeted', u'connectivity_type': u'E-LINE', u'vdu_reference': [u'vdu1'], u'alias': u'data_out', u'connection_points_reference': [u'cp5'], u'access': False, u'external_access': True, u'root_requirement': u'Unlimeted', u'dhcp': False, u'id': u'vl5', u'qos': u''}], u'descriptor_version': u'1', u'deployment_flavours': [{u'vdu_reference': [u'vdu0'], u'constraint': u'', u'flavour_key': u'gold', u'vlink_reference': [u'vl0', u'vl1', u'vl2'], u'id': 0, u'assurance_parameters': [{u'violation': [{u'interval': 360, u'breaches_count': 2}], u'value': 50, u'penalty': {u'expression': 10, u'type': u'Discount', u'unit': u'packets', u'validity': u'2PD'}, u'formula': u'packets_dropped GT 50', u'rel_id': u'param0', u'id': u'packets_dropped', u'unit': u'packets'}]}, {u'vdu_reference': [u'vdu1'], u'constraint': u'', u'flavour_key': u'silver', u'vlink_reference': [u'vl3', u'vl4', u'vl5'], u'id': 1, u'assurance_parameters': [{u'violation': [{u'interval': 360, u'breaches_count': 2}], u'value': 100, u'penalty': {u'expression': 8, u'type': u'Discount', u'unit': u'packets', u'validity': u'2PD'}, u'formula': u'packets_dropped GT 100', u'rel_id': u'param0', u'id': u'packets_dropped', u'unit': u'packets'}]}], u'version': u'1', u'vnf_lifecycle_events': [{u'authentication_username': u'ubuntu', u'driver': u'ssh', u'authentication_type': u'PubKeyAuthentication', u'authentication': u'<<SSH KEY>>', u'events': {u'start': {u'command': u'service xxx start', u'template_file': u'<< lifecycle event template >>', u'template_file_format': u'JSON'}, u'stop': {u'command': u'service xxx stop', u'template_file': u'<< lifecycle event template >>', u'template_file_format': u'JSON'}, u'restart': {}}, u'flavor_id_ref': u'gold'}, {u'authentication_username': u'ubuntu', u'driver': u'ssh', u'authentication_type': u'PubKeyAuthentication', u'authentication': u'<<SSH KEY>>', u'events': {u'start': {u'command': u'service xxx start', u'template_file': u'<< lifecycle event template >>', u'template_file_format': u'JSON'}, u'stop': {u'command': u'service xxx stop', u'template_file': u'<< lifecycle event template >>', u'template_file_format': u'JSON'}, u'restart': {}}, u'flavor_id_ref': u'flavor1'}], u'billing_model': {u'model': u'PAYG', u'price': {u'min_per_period': 20, u'max_per_period': 50, u'setup': 20, u'unit': u'EUR'}}, u'provider': u'TEIC', u'release': u'T-NOVA', u'trade': True, u'type': u'FW', u'id': 30, u'description': u'pfSense Firewall Description'}}
+
+Creating VNF Folder:
+ok

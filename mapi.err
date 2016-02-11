@@ -1,0 +1,13 @@
+nohup: ignoring input
+Bottle v0.12.0 server starting up (using WSGIRefServer())...
+Listening on http://0.0.0.0:1234/
+Hit Ctrl-C to quit.
+
+10.10.1.61 - - [28/Jan/2016 17:15:31] "DELETE /vnf_api/56a665767bd3921022000002/ HTTP/1.1" 200 0
+10.220.1.6 - - [30/Jan/2016 02:14:56] "POST /vnf_api/ HTTP/1.1" 400 723
+127.0.0.1 - - [30/Jan/2016 02:31:10] "DELETE /vnf_api/569cf21f7bd39216ef000000 HTTP/1.1" 404 784
+127.0.0.1 - - [30/Jan/2016 02:31:21] "DELETE /vnf_api/VNF_569d078f7bd39218a4000000 HTTP/1.1" 404 792
+127.0.0.1 - - [30/Jan/2016 02:31:26] "DELETE /vnf_api/569d078f7bd39218a4000000 HTTP/1.1" 404 784
+127.0.0.1 - - [30/Jan/2016 02:31:37] "DELETE /vnf_api/569fabb27bd3921df6000000 HTTP/1.1" 404 784
+127.0.0.1 - - [30/Jan/2016 02:31:49] "DELETE /vnf_api/VNF_569fac357bd3921df6000001 HTTP/1.1" 404 792
+127.0.0.1 - - [30/Jan/2016 02:32:07] "DELETE /vnf_api/56ac1cdb7bd3921279000000 HTTP/1.1" 404 784

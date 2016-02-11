@@ -44,7 +44,7 @@ def register_vnf(vnf_id, vnf_descriptor):
         job_url = create_job(vnf_id, event)
         print "ok"
         #write templates to files
-        print "\nSaving template files:"
+        print "\nSaving template files: " + mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.json'
         if event.has_key("template_file_format"):
           if event["template_file_format"] == 'xml':
             fromstring(job["template_file"]).write(mapi_folder + "VNF_Library/VNF_" + vnf_id + '/' + event["Event"] + '.xml', encoding="UTF-8", xml_declaration=True)
