@@ -9,7 +9,7 @@
           <configuration>
             <entry key="destinationPath" value="/home/ubuntu/" />
             <entry key="echo" value="true" />
-            <entry key="sourcePath" value="/home/vnfm/wp5/WP5/mAPI/VNF_Library/VNF_56bcc4457bd39214c5000000/current.JSON" />
+            <entry key="sourcePath" value="/home/vnfm/wp5/WP5/mAPI/VNF_Library/VNF_56bcd7517bd39215b4000000/current.json" />
           </configuration>
         </node-step-plugin>
       </command>
@@ -21,7 +21,7 @@
     <description>T-NOVA middleware API</description>
     <name>stop</name>
     <context>
-      <project>56bcc4457bd39214c5000000</project>
+      <project>56bcd7517bd39215b4000000</project>
     </context>
     <dispatch>
       <threadcount>1</threadcount>
