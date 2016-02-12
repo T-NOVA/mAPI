@@ -1,2 +1,4 @@
-keys/
-VNF_Library/
+keys/*
+!keys/.gitkeep
+VNF_Library/*
+!VNF_Library/.gitkeep
