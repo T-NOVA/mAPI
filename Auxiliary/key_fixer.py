@@ -8,12 +8,17 @@ class keyFixer(object):
     self.lineE = '-----END RSA PRIVATE KEY-----'
 
   def parseKey(self):
-    content = self.key.split(self.lineS)[1].split(self.lineE)[0]
-    key_file = open(self.path, 'w')
-    print >> key_file, self.lineS
-    for x in range(0,len(content),64):
-      print >> key_file, content[x:x+64]
-    print >> key_file, self.lineE
-    key_file.close()
-    del(content)
+    if '\n' in self.key:
+      key_file = open(self.path, 'w')
+      print >> key_file, self.key
+      key_file.close()
+    else:
+      content = self.key.split(self.lineS)[1].split(self.lineE)[0]
+      key_file = open(self.path, 'w')
+      print >> key_file, self.lineS
+      for x in range(0,len(content),64):
+        print >> key_file, content[x:x+64]
+      print >> key_file, self.lineE
+      key_file.close()
+      del(content)
     del(key_file)
