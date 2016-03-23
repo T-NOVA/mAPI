@@ -3,7 +3,7 @@ import httplib
 from json import loads, dumps
 from Auxiliary import formdata
 from Config import configuration
-
+import sys
 
 conf = configuration.Configuration()
 mapi_folder = conf.get_mAPI_folder()
@@ -71,8 +71,10 @@ def delete_job(job_url):
 
 def create_project(vnf_id, ems):
   print "\nCreating project in Rundeck\n"
+  print mapi_folder
   with open(mapi_folder + 'Rundeck_Aux/project_request.json', 'r') as f:
     project_request = loads(f.read())
+  print project_request
   project_request['name'] = vnf_id
   if ems['driver'].lower() == 'ssh':
     if ems['authentication_type'] == 'PubKeyAuthentication':
@@ -95,32 +97,70 @@ def create_job(vnf_id, job):
   print "\nCreate Job in Rundeck\n"
   print "Job description: \n"
   print job
-  tree = ET.parse(mapi_folder + 'Rundeck_Aux/job_template.xml')
-  root = tree.getroot()
-  if "template_file" in job:
-    for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
-      if entry.attrib['key'] == 'destinationPath':
-        entry.set('value',job["VNF Container"])
-      elif entry.attrib['key'] == 'sourcePath':
-        entry.set('value',job["VNF Folder"] + 'current' + '.' + job["template_file_format"].lower())
-  else:
+
+  if job['authentication_type'] == 'HTTPBasicAuth':
+    tree = ET.parse(mapi_folder + 'Rundeck_Aux/http_job_template.xml')
+    root = tree.getroot()
+
     for command in root.findall('./job/sequence/command'):
       if command.find('node-step-plugin') is not None:
-        root.find('./job/sequence').remove(command)
-  if "command" in job:
-    root.find('./job/sequence/command/exec').text = job["command"]
+        print command.tag, command.attrib
+        if command.find('node-step-plugin').attrib['type'] == 'httpUploadNodeStep':
+          root.find('./job/sequence').remove(command)
+          print 'delete command'
+
+    for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
+      print 'entry'
+      request = job["command"].split()
+      if entry.attrib['key'] == 'method':
+        entry.set('value',request[0])
+        print entry.attrib['key'] + entry.attrib['value']
+      elif entry.attrib['key'] == 'url':
+        entry.set('value',request[1])
+        print entry.attrib['key'] + entry.attrib['value']
+      elif entry.attrib['key'] == 'user':
+        entry.set('value',job["authentication_username"])
+        print entry.attrib['key'] + entry.attrib['value']
+      elif entry.attrib['key'] == 'password':
+        entry.set('value',job["authentication"])
+        print entry.attrib['key'] + entry.attrib['value']
+
     root.find('./job/context/project').text = vnf_id
+    
+    print 'end'
+
   else:
-    for command in root.findall('./job/sequence/command'):
-      if command.find('exec') is not None:
-        root.find('./job/sequence').remove(command)
-#  if notification:
-#    root.find('./job/notification/onfailure/webhook').set('urls','http://192.168.1.1/panic/')
-#    root.find('./job/notification/onsuccess/webhook').set('urls','http://192.168.1.1/victory/')
-#  else:
-  root[0].remove(root.find('./job/notification'))
+    tree = ET.parse(mapi_folder + 'Rundeck_Aux/job_template.xml')
+    root = tree.getroot()
+    if "template_file" in job:
+      for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
+        if entry.attrib['key'] == 'destinationPath':
+          entry.set('value',job["VNF Container"])
+        elif entry.attrib['key'] == 'sourcePath':
+          entry.set('value',job["VNF Folder"] + 'current' + '.' + job["template_file_format"].lower())
+    else:
+      for command in root.findall('./job/sequence/command'):
+        if command.find('node-step-plugin') is not None:
+          root.find('./job/sequence').remove(command)
+    if "command" in job:
+      root.find('./job/sequence/command/exec').text = job["command"]
+      root.find('./job/context/project').text = vnf_id
+    else:
+      for command in root.findall('./job/sequence/command'):
+        if command.find('exec') is not None:
+          root.find('./job/sequence').remove(command)
+    #  if notification:
+    #    root.find('./job/notification/onfailure/webhook').set('urls','http://192.168.1.1/panic/')
+    #    root.find('./job/notification/onsuccess/webhook').set('urls','http://192.168.1.1/victory/')
+    #  else:
+    root[0].remove(root.find('./job/notification'))
+  
   root.find('./job/name').text = job["Event"]
   tree.write("job_temp.xml")
+  
+  print ET.tostring(root)
+
+
   job_url = post_job("job_temp.xml")
   print "\nJob is available at: " + job_url
   print "\nFinished creating job in Rundeck\n"
