@@ -145,7 +145,7 @@ def create_job(vnf_id, job):
         if entry.attrib['key'] == 'sourcePath':
           entry.set('value',job["VNF Folder"] + 'current' + '.' + job["template_file_format"].lower())
         if entry.attrib['key'] == 'destinationFileName':
-          entry.set('value', 'filename')
+          entry.set('value', 'filename') # set the default name to filename
 
     for command in root.findall('./job/sequence/command'):
       if command.find('node-step-plugin') is not None:
@@ -223,7 +223,6 @@ def list_jobs(project_id):
   headers = ({"X-Rundeck-Auth-Token" : "%s" % rundeck_token})
   con.request('GET', '/api/12/project/'+project_id+'/jobs', headers = headers)
   response = con.getresponse().read()
-  #print response
   print "\nFinished listing jobs\n"
   return response
 
@@ -234,6 +233,5 @@ def get_job(job_id):
   headers = ({"X-Rundeck-Auth-Token" : "%s" % rundeck_token})
   con.request('GET', '/api/12/job/'+job_id, headers = headers)
   response = con.getresponse().read()
-  #print response
   print "\nFinish getting job\n"
   return response
