@@ -1,5 +1,5 @@
 {
-  "id":"testhttp",
+  "id":"http-driver",
   "vnfd": {
     "vnf_lifecycle_events":{
       "driver":"HTTP",

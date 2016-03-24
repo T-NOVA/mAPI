@@ -104,7 +104,7 @@ def update_job(job_id, ip, project):
   # update only HTTP commands
   for command in root.findall('./job/sequence/command'):
       if command.find('node-step-plugin') is not None:
-        if command.find('node-step-plugin').attrib['type'] != 'httpCommandNodeStep':
+        if command.find('node-step-plugin').attrib['type'] == 'copyfile':
           print "No need for update"
           return 0
       else:
@@ -113,6 +113,8 @@ def update_job(job_id, ip, project):
 
   for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
     if entry.attrib['key'] == 'url':
+      if entry.attrib['value'].find('http') == 0: # the command has already updated previously 
+        return 0
       entry.set('value','http://'+ip+entry.attrib['value'])
       print entry.attrib['key'] + entry.attrib['value']
 
@@ -138,13 +140,21 @@ def create_job(vnf_id, job):
   if job['authentication_type'] == 'HTTPBasicAuth':
     tree = ET.parse(mapi_folder + 'Rundeck_Aux/http_job_template.xml')
     root = tree.getroot()
+    if "template_file" in job:
+      for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
+        if entry.attrib['key'] == 'sourcePath':
+          entry.set('value',job["VNF Folder"] + 'current' + '.' + job["template_file_format"].lower())
+        if entry.attrib['key'] == 'destinationFileName':
+          entry.set('value', 'filename')
 
     for command in root.findall('./job/sequence/command'):
       if command.find('node-step-plugin') is not None:
-        print command.tag, command.attrib
-        if command.find('node-step-plugin').attrib['type'] == 'httpUploadNodeStep':
-          root.find('./job/sequence').remove(command)
-          print 'delete command'
+        if "template_file" in job:
+          if command.find('node-step-plugin').attrib['type'] == 'httpCommandNodeStep':
+            root.find('./job/sequence').remove(command)
+        else:
+          if command.find('node-step-plugin').attrib['type'] == 'httpUploadNodeStep':
+            root.find('./job/sequence').remove(command)
 
     for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
       request = job["command"].split()
