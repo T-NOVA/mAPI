@@ -93,6 +93,43 @@ def add_node(vnf_id, ip_address, vnf_username):
   ET.ElementTree(project).write(rundeck_project_folder + vnf_id + "/etc/resources.xml", encoding="UTF-8", xml_declaration=True)
   print "\nFinished adding node to Rundeck\n"
 
+def update_job(job_id, ip, project):
+  print "\nUpdating Job\n"
+  print "job id: "+job_id
+  print "VNFC ip: "+ip
+
+  job = get_job(job_id)
+  root = ET.fromstring(job)
+
+  # update only HTTP commands
+  for command in root.findall('./job/sequence/command'):
+      if command.find('node-step-plugin') is not None:
+        if command.find('node-step-plugin').attrib['type'] != 'httpCommandNodeStep':
+          print "No need for update"
+          return 0
+      else:
+        print "No need for update"
+        return 0
+
+  for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
+    if entry.attrib['key'] == 'url':
+      entry.set('value','http://'+ip+entry.attrib['value'])
+      print entry.attrib['key'] + entry.attrib['value']
+
+  tree = ET.ElementTree(root)
+  tree.write("job_temp.xml")
+
+  print "\nUpdating Job in Rundeck\n"
+  files = {'xmlBatch': {'filename': "job_temp.xml", 'content': open("job_temp.xml",'rb').read()}}
+  data, headers = formdata.encode_multipart({"dupeOption":"update", "project": project}, files)
+  con = httplib.HTTPConnection(rundeck_host, rundeck_port)
+  headers["X-Rundeck-Auth-Token"] = "%s" % rundeck_token
+  con.request('POST', '/api/12/jobs/import/', data, headers = headers)
+  response = con.getresponse()
+  xml = ET.fromstring(response.read())
+  print "\nFinished uploading Job to Rundeck\n"
+  return xml.find('./succeeded/job').attrib['href']
+
 def create_job(vnf_id, job):
   print "\nCreate Job in Rundeck\n"
   print "Job description: \n"
@@ -110,25 +147,20 @@ def create_job(vnf_id, job):
           print 'delete command'
 
     for entry in root.findall('./job/sequence/command/node-step-plugin/configuration/entry'):
-      print 'entry'
       request = job["command"].split()
       if entry.attrib['key'] == 'method':
         entry.set('value',request[0])
-        print entry.attrib['key'] + entry.attrib['value']
       elif entry.attrib['key'] == 'url':
-        entry.set('value',request[1])
-        print entry.attrib['key'] + entry.attrib['value']
+        if job["authentication_port"] != "80":
+          entry.set('value',":"+job["authentication_port"]+request[1])
+        else:
+          entry.set('value',request[1])
       elif entry.attrib['key'] == 'user':
         entry.set('value',job["authentication_username"])
-        print entry.attrib['key'] + entry.attrib['value']
       elif entry.attrib['key'] == 'password':
         entry.set('value',job["authentication"])
-        print entry.attrib['key'] + entry.attrib['value']
 
     root.find('./job/context/project').text = vnf_id
-    
-    print 'end'
-
   else:
     tree = ET.parse(mapi_folder + 'Rundeck_Aux/job_template.xml')
     root = tree.getroot()
@@ -157,10 +189,7 @@ def create_job(vnf_id, job):
   
   root.find('./job/name').text = job["Event"]
   tree.write("job_temp.xml")
-  
-  print ET.tostring(root)
-
-
+  #print ET.tostring(root)
   job_url = post_job("job_temp.xml")
   print "\nJob is available at: " + job_url
   print "\nFinished creating job in Rundeck\n"
@@ -175,4 +204,26 @@ def execute_job(jobUrl):
   con.request('POST', jobUrl+'/run', headers = headers)
   response = con.getresponse().read()
   print "\nFinished executing job in Rundeck\n"
+  return response
+
+def list_jobs(project_id):
+  print "\nListing jobs\n"
+  print "Project: " + project_id
+  con = httplib.HTTPConnection(rundeck_host, rundeck_port)
+  headers = ({"X-Rundeck-Auth-Token" : "%s" % rundeck_token})
+  con.request('GET', '/api/12/project/'+project_id+'/jobs', headers = headers)
+  response = con.getresponse().read()
+  #print response
+  print "\nFinished listing jobs\n"
+  return response
+
+def get_job(job_id):
+  print "\nGet job\n"
+  print "Job: "+job_id
+  con = httplib.HTTPConnection(rundeck_host, rundeck_port)
+  headers = ({"X-Rundeck-Auth-Token" : "%s" % rundeck_token})
+  con.request('GET', '/api/12/job/'+job_id, headers = headers)
+  response = con.getresponse().read()
+  #print response
+  print "\nFinish getting job\n"
   return response

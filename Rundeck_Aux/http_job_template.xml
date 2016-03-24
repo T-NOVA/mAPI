@@ -11,18 +11,7 @@
     <scheduleEnabled>true</scheduleEnabled>
     <sequence keepgoing='false' strategy='node-first'>
       <command>
-        <description>http command</description>
-        <node-step-plugin type='httpCommandNodeStep'>
-          <configuration>
-            <entry key='method' value='' />
-            <entry key='user' value='' />
-            <entry key='password' value='' />
-            <entry key='url' value='' />
-          </configuration>
-        </node-step-plugin>
-      </command>
-      <command>
-        <description>http command</description>
+        <description>HTTP file upload</description>
         <node-step-plugin type='httpUploadNodeStep'>
           <configuration>
             <entry key='method' value='' />
@@ -31,6 +20,17 @@
             <entry key='url' value='' />
             <entry key='sourcePath' value='' />
             <entry key='destinationFileName' value='' />
+          </configuration>
+        </node-step-plugin>
+      </command>
+      <command>
+        <description>HTTP call</description>
+        <node-step-plugin type='httpCommandNodeStep'>
+          <configuration>
+            <entry key='method' value='' />
+            <entry key='user' value='' />
+            <entry key='password' value='' />
+            <entry key='url' value='' />
           </configuration>
         </node-step-plugin>
       </command>
