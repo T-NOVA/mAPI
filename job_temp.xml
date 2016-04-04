@@ -1,0 +1,37 @@
+<joblist>
+  <job>
+    <id />
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing="false" strategy="node-first">
+      <command>
+        <description>copy configuration file to vnf</description>
+        <node-step-plugin type="copyfile">
+          <configuration>
+            <entry key="destinationPath" value="/home/ubuntu/" />
+            <entry key="echo" value="true" />
+            <entry key="sourcePath" value="/home/vnfm/wp5/WP5/mAPI/VNF_Library/VNF_56bcd7517bd39215b4000000/current.json" />
+          </configuration>
+        </node-step-plugin>
+      </command>
+      <command>
+        <exec>/home/ubuntu/stop.sh</exec>
+        <description>run vnf command</description>
+      </command>
+    </sequence>
+    <description>T-NOVA middleware API</description>
+    <name>stop</name>
+    <context>
+      <project>56bcd7517bd39215b4000000</project>
+    </context>
+    <dispatch>
+      <threadcount>1</threadcount>
+      <keepgoing>false</keepgoing>
+      <excludePrecedence>true</excludePrecedence>
+      <rankOrder>ascending</rankOrder>
+    </dispatch>
+    <uuid />
+    <nodefilters>
+      <filter>.*</filter>
+    </nodefilters>
+  </job>
+</joblist>
