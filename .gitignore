@@ -1,0 +1,5 @@
+Config/*.cfg
+keys/*
+!keys/.gitkeep
+VNF_Library/*
+!VNF_Library/.gitkeep

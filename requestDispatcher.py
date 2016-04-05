@@ -1,7 +1,7 @@
 import xml.etree.cElementTree as ET
 from Database.mapidb import mapiDB
 from Rundeck_Aux.rich_template import enrich_config_template
-from Rundeck_Aux.rundeckconnector import add_node, execute_job, delete_project, is_job_running 
+from Rundeck_Aux.rundeckconnector import add_node, execute_job, delete_project, is_job_running, list_jobs, update_job 
 from Config.configuration import Configuration
 import shutil
 import json
@@ -23,6 +23,7 @@ def initial_configuration(vnf_id, vnfm_request_file):
   try:
     # access DB and retrieve event info
     event = db.get_event('start', vnf_id)
+
     if vnfm_request_file:
       # build configuration file if applicable
       with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/" + "start" + ".json", "r") as template:
@@ -36,6 +37,12 @@ def initial_configuration(vnf_id, vnfm_request_file):
     print "VM username: " + event.vnf.username + '\n'
     # add node to rundeck
     add_node(vnf_id, vnfm_request_file['vnf_controller'], event.vnf.username)
+    # update jobs with the VNFC ip only when the HTTP driver is used
+    jobs = list_jobs(vnf_id)
+    root = ET.fromstring(jobs)
+    for job in root.findall('job'):
+      update_job(job.attrib['id'], vnfm_request_file['vnf_controller'], vnf_id)
+
     # trigger job execution
     execute_job(event.jobUrl)
     print "End of VNF initial configuration\n"

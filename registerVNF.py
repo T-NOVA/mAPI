@@ -40,6 +40,14 @@ def register_vnf(vnf_id, vnf_descriptor):
         event["Event"] = elem[0]
         event["VNF Folder"] = folder
         event["VNF Container"] = vnf_descriptor["vnf_lifecycle_events"]["vnf_container"]
+        event["authentication_type"] = vnf_descriptor["vnf_lifecycle_events"]["authentication_type"]
+        if vnf_descriptor['vnf_lifecycle_events']['authentication_type'] == 'HTTPBasicAuth':
+          if vnf_descriptor['vnf_lifecycle_events']['authentication_port'] is not None:
+            event["authentication_port"] = vnf_descriptor['vnf_lifecycle_events']['authentication_port']
+          else:
+            event["authentication_port"] = "80"
+          event["authentication_username"] = vnf_descriptor['vnf_lifecycle_events']['authentication_username']
+          event["authentication"] = vnf_descriptor['vnf_lifecycle_events']['authentication']
         print "\nCreating Job in Rundeck:"
         job_url = create_job(vnf_id, event)
         print "ok"
