@@ -1,0 +1,9 @@
+{
+	"event":"start",
+	"vnf_controller":"192.85.202.3",
+	"parameters":{
+		"CPophy#fixed_ips#0#ip_address":"192.85.202.4",
+		"CPdc3p#fixed_ips#0#ip_address":"192.85.202.4",
+		"CP3j2r#fixed_ips#0#ip_address":"192.85.202.4"
+	}
+}

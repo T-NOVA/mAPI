@@ -1,37 +1,27 @@
 <joblist>
   <job>
-    <id />
+    <id>4f0a3067-8f1a-4b8f-a6e0-fae43cff71d6</id>
     <loglevel>INFO</loglevel>
     <sequence keepgoing="false" strategy="node-first">
       <command>
-        <description>copy configuration file to vnf</description>
-        <node-step-plugin type="copyfile">
+        <description>HTTP file upload</description>
+        <node-step-plugin type="httpUploadNodeStep">
           <configuration>
-            <entry key="destinationPath" value="/home/ubuntu/" />
-            <entry key="echo" value="true" />
-            <entry key="sourcePath" value="/home/vnfm/wp5/WP5/mAPI/VNF_Library/VNF_56bcd7517bd39215b4000000/current.json" />
+            <entry key="destinationFileName" value="filename" />
+            <entry key="method" value="PUT" />
+            <entry key="password" value="tnovatnova" />
+            <entry key="sourcePath" value="/home/vnfm/temp/mAPI/VNF_Library/VNF_t3/current.json" />
+            <entry key="url" value="http://127.0.0.1:8080/vnf_api/vSBC/config" />
+            <entry key="user" value="italtel" />
           </configuration>
         </node-step-plugin>
-      </command>
-      <command>
-        <exec>/home/ubuntu/stop.sh</exec>
-        <description>run vnf command</description>
       </command>
     </sequence>
     <description>T-NOVA middleware API</description>
     <name>stop</name>
     <context>
-      <project>56bcd7517bd39215b4000000</project>
+      <project>t3</project>
     </context>
-    <dispatch>
-      <threadcount>1</threadcount>
-      <keepgoing>false</keepgoing>
-      <excludePrecedence>true</excludePrecedence>
-      <rankOrder>ascending</rankOrder>
-    </dispatch>
-    <uuid />
-    <nodefilters>
-      <filter>.*</filter>
-    </nodefilters>
-  </job>
+    <uuid>4f0a3067-8f1a-4b8f-a6e0-fae43cff71d6</uuid>
+  <nodefilters><filter>.*</filter></nodefilters></job>
 </joblist>

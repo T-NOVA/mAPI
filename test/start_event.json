@@ -2,7 +2,6 @@
   "event":"start",
   "vnf_controller":"10.0.2.15",
   "parameters": {
-    "vdu0:vnfc0:data0#ip":"1.1.1.1",
-    "vdu1:vnfc0:data0#ip":"2.2.2.2"
+    "vdu1#PublicIp":"1.1.1.1"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "id":"http-driver2",
+  "vnfd": {
+    "vnf_lifecycle_events":{
+      "driver":"HTTP",
+      "authentication_type":"HTTPBasicAuth",
+      "authentication_username":"george",
+      "authentication":"1234567",
+      "vnf_container":"/home/george/container/",
+      "authentication_port":"8080",
+      "events":{
+          "start":{
+            "command":"POST /examples/postrequest",
+            "template_file_format":"json",
+            "template_file":"{\"controller\":\"get_attr[CPofun, fixed_ips, 0, ip_address]\"}"
+          },
+          "stop":{
+            "command":"PUT /examples/request"
+          }
+      }
+    }
+  }
+}
+

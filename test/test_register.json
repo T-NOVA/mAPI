@@ -1,0 +1,26 @@
+{
+	"id": "a",
+	"vnfd": {
+		"vnf_lifecycle_events": {
+			"authentication_username": "root",
+			"driver": "ssh",
+			"authentication_type": "PubKeyAuthentication",
+			"authentication": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpQIBAAKCAQEAvJC3ZJCJttVPZfiwd/r0xki6yvrHXyWAaqHJfz8MtPR9FM8V\nQyqAr/Kh5dthq+jB3/fMYOFyH1JZULiBSDXsnXr/38oa6qkBTZWE4mMWtSvoNzBx\nQhCt906X3eYHsUNmjUbOMWUH2EKncYBdf2cO/faXMMCh9ESi85N4rSus1fLAvWtX\nW683PfjJQ7WTYMV7ThYqyc0e9afZAnGWQDy9o6gmYrc68GVEdbONPwMstUkP+Z9s\ns5o4JdtjlZcppjGEAJU+yuCdpX8emdnBEU2Q7hGpgp8p63SIuSQ9vV9v0NChj5Q4\n8HCrZIkBWe2fpA4TWMMkW9P+y4mrf/czo6eeeQIDAQABAoIBAQCoYaoCOTdgdpaR\n/kLGwOg279ctTkceZYSIs7QU1p5oMDJJlKnt8lQ7ybRcZ0yOkCgf8U0l7etUoNp0\nxG1dqBmEfsNieT0T8prhRvUEm2s5mN2h+rYIQpC2WA4w7ipMVl2LJoEVhpw8tziC\nmBflnoe6rKpRtJJqZ6gDTdri+C88VCK9vJNkTXx8Mg+Vol3/2U6hCNjcULLuHq45\nm9BJwIpOLEVY4VKhb24C9hIU7wkDk+4D7y8D8rdbWLpmQGZ3Bc+tL4kTB8Mt7QhL\nTu4vWP2WKnocFAkkpQTJ2yiEC7A6NhbsNqXcgWIfJ1y9Be6ccu9k7TqQHKM9I0zH\ne29nWPHJAoGBAONVYU6m9+C8a2rH2dZKO6i/R+AoKYVzKQomWq7DYoFzN5sA1v+D\n9YxaEP+1nmgIP805RALd51ie+Ald/g0Y8t62odN2aMW19jtAINgj4lRoNcxjh75t\nSgS3hLwhwQil84SXAEijZYpMmdHjziydE3yNXT8Z/M68toJRpL38nV7vAoGBANRX\n2RsDbze83fSmfd+0ztuIXDc9JtgqV/qp95ezO0/jdLy9AD8NEKFgcb0OWE9lG5dj\naa/4JOQjJGI6Eg1tcQJ8aK3NHG9EDnAyWN4EMhxxzmOq43+3mf71dCL5n8025Fot\nNnuw96SRnZOd1LfhB0IQAzO4QD8oznsIH6ssrVkXAoGBAMz3gSmaD2o4WB1JnZXB\nDnNCK3rmmzEwOLNnC2IA1gLjMCJ4KmDsyGrIFgWH6g/gSC4v0KtJCbp0cix364RB\nl1DIl7WCUErameyoEDTwfbMe1kq2/n/qJ8+C65F4WYQDpEFKqD3V3MpJ8HI2lADT\niutExesL8k0wBtoO5JtLdVRPAoGALQOWdaCLwjAaiVOGGZdVxrooellPU8HeNrgz\nUYhgSXY5eA1E8RjO7rboRaC13dbcO4KKlBAxmd9NRjlzPD94FoPTGQ0DOx8dRHGX\n3zDagqcpjn1ajueYELFt9kAevT0muWseQqhoRw3LbtClmHlutXV5iExF6l23L+Ov\n+vSUpu8CgYEA0btOwdWmvFIJzNbsUxKGk1dPNdNAs5pXDB6g7KAiMq422lJbVcyv\nq5GGgkK3N9SzvSCxteR6Kdx3iNwBEsKUrOSTZc2J2nCNOZ26c6CKc0wi6cc7FAnA\nYMTbMe8cecI0TI4hxPEEsHdmzZ5YLzhh5e/EOFzGI5aqbSs4M6BXrKw=\n-----END RSA PRIVATE KEY-----",
+			"authentication_port": 22,
+			"flavor_id_ref": "flavor0",
+			"events": {
+				"start": {
+					"command": "/root/start",
+					"template_file": "{\"controller\":\"get_attr[CPophy, fixed_ips, 0, ip_address]\", \"vdu1net0\":\"get_attr[CP3j2r, fixed_ips, 0, ip_address]\", \"vdu1net1\":\"get_attr[CPdc3p, fixed_ips, 0, ip_address]\"}",
+					"template_file_format": "JSON"
+				},
+				"stop": {
+					"command": "/root/stop",
+					"template_file": "{\"controller\":\"get_attr[CPophy, fixed_ips, 0, ip_address]\", \"vdu1net0\":\"get_attr[CP3j2r, fixed_ips, 0, ip_address]\", \"vdu1net1\":\"get_attr[CPdc3p, fixed_ips, 0, ip_address]\"}",
+					"template_file_format": "JSON"
+				}
+			},
+			"vnf_container": "/root/"
+		}
+	}
+}

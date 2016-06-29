@@ -32,6 +32,6 @@ class Event(Base):
   def __repr__(self):
     return "Event (Event Name='%s', Job Url='%s', VNF Id='%s')>" %(self.name, self.jobUrl, self.vnfId)
 
-engine = create_engine('mysql://' + db_user + ':' + db_password + '@' + db_ip + '/mapi')
+engine = create_engine('mysql://' + db_user + ':' + db_password + '@' + db_ip + '/mapi', pool_recycle = 300)
 
 Base.metadata.create_all(engine)

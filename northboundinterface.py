@@ -3,7 +3,8 @@ from Config.configuration import Configuration
 from registerVNF import register_vnf
 from requestDispatcher import get_current_configuration, initial_configuration, update_configuration, delete_vnf
 from json import loads
-from Database.mapidb import mapiDB
+#from Database.mapidb import mapiDB
+import Database.mapidb2 as db
 import httplib
 
 conf = Configuration()
@@ -17,7 +18,7 @@ if str(auth_method) == 'basic':
   password = conf.get_password()
 
 def validate_VNF(vnf_id):
-  db = mapiDB()
+#  db = mapiDB()
   if db.get_VNF(str(vnf_id)) == None:
     return False
   else:

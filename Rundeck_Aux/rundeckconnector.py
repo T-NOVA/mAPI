@@ -118,6 +118,13 @@ def update_job(job_id, ip, project):
       entry.set('value','http://'+ip+entry.attrib['value'])
       print entry.attrib['key'] + entry.attrib['value']
 
+  for job in root.findall('./job'):
+    temp = ET.SubElement(job, 'nodefilters')
+    temp2 = ET.SubElement(temp, 'filter')
+    temp2.text = '.*'
+
+  print ET.tostring(root)
+
   tree = ET.ElementTree(root)
   tree.write("job_temp.xml")
 

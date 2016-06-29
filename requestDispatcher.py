@@ -1,5 +1,6 @@
 import xml.etree.cElementTree as ET
-from Database.mapidb import mapiDB
+#from Database.mapidb import mapiDB
+import Database.mapidb2 as db
 from Rundeck_Aux.rich_template import enrich_config_template
 from Rundeck_Aux.rundeckconnector import add_node, execute_job, delete_project, is_job_running, list_jobs, update_job 
 from Config.configuration import Configuration
@@ -9,7 +10,7 @@ import json
 conf = Configuration()
 ##TNOVA_user = conf.get_TNOVA_user()
 mapi_folder = conf.get_mAPI_folder()
-db = mapiDB()
+#db = mapiDB()
 
 def get_current_configuration(vnf_id):
   try:
@@ -22,16 +23,20 @@ def get_current_configuration(vnf_id):
 def initial_configuration(vnf_id, vnfm_request_file):
   try:
     # access DB and retrieve event info
-    event = db.get_event('start', vnf_id)
-
+    print  "\nVNF ID: " + vnf_id 
+    event = db.get_event('start', db.get_VNF(vnf_id))
+    print "\nEvent: " + str(event) + "\n"
     if vnfm_request_file:
+      if vnfm_request_file.has_key('parameters') and not vnfm_request_file['parameters'] == {}:
       # build configuration file if applicable
-      with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/" + "start" + ".json", "r") as template:
-        json_obj = enrich_config_template(vnfm_request_file['parameters'], json.loads(template.read()))
-        print '\nConfiguration file ready:\n'
-        print json_obj
-        with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/current.json", "w") as json_file:
-          json_file.write(json.dumps(json_obj))
+        with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/" + "start" + ".json", "r") as template:
+          json_obj = enrich_config_template(vnfm_request_file['parameters'], json.loads(template.read()))
+          print '\nConfiguration file ready:\n'
+          print json_obj
+          with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/current.json", "w") as json_file:
+            json_file.write(json.dumps(json_obj))
+    else:
+      vnfm_request_file = {}
     print "\nVNF Controller info: \n"
     print "VNF Controller : " + vnfm_request_file['vnf_controller'] + '\n'
     print "VM username: " + event.vnf.username + '\n'
@@ -52,8 +57,8 @@ def initial_configuration(vnf_id, vnfm_request_file):
 
 def update_configuration(vnf_id, vnfm_request_file):
   try:
-    event = db.get_event(vnfm_request_file["event"], vnf_id)
-    if vnfm_request_file.has_key('parameters'):
+    event = db.get_event(vnfm_request_file["event"], db.get_VNF(vnf_id))
+    if vnfm_request_file.has_key('parameters') and not vnfm_request_file['parameters'] == {}:
       print "the new configuration has a request file"
       with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/" + vnfm_request_file["event"] + ".json", "r") as template:
         json_obj = enrich_config_template(vnfm_request_file['parameters'], json.loads(template.read()))
@@ -72,13 +77,13 @@ def update_configuration(vnf_id, vnfm_request_file):
 def delete_vnf(vnf_id, vnfm_request_file = None):
   try:
     if vnfm_request_file:
-      if vnfm_request_file.has_key('parameters'):
+      if vnfm_request_file.has_key('parameters') and not vnfm_request_file['parameters'] == {}:
         print "the stop operation has request file"
         with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/" + vnfm_request_file["event"] + ".json", "r") as template:
           json_obj = enrich_config_template(vnfm_request_file['parameters'], json.loads(template.read()))
           with open(mapi_folder + "VNF_Library/VNF_" + vnf_id + "/current.json", "w") as json_file:
             json_file.write(json.dumps(json_obj))
-    event = db.get_event('stop', vnf_id)
+    event = db.get_event('stop', db.get_VNF(vnf_id))
     response = execute_job(event.jobUrl)
     response = ET.fromstring(response)
     while is_job_running(response.find("./execution/job").attrib['id']):

@@ -1,0 +1,8 @@
+{
+  "event":"start",
+  "vnf_controller":"10.10.1.67",
+  "parameters": {
+    "vdu1#PublicIp":"2.2.2.2"
+  }
+}
+

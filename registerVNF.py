@@ -1,5 +1,6 @@
 from os import makedirs, path, fork
-from Database.mapidb import mapiDB
+#from Database.mapidb import mapiDB
+import Database.mapidb2 as db
 from Rundeck_Aux.rundeckconnector import create_project, create_job
 from xml.etree.cElementTree import fromstring
 from Config.configuration import Configuration
@@ -12,7 +13,7 @@ def register_vnf(vnf_id, vnf_descriptor):
   child =0
   if child == 0:
     #create DB object
-    db = mapiDB()
+#    db = mapiDB()
 
     #create VNF folder
     print "\nCreating VNF Folder:"
@@ -43,7 +44,7 @@ def register_vnf(vnf_id, vnf_descriptor):
         event["authentication_type"] = vnf_descriptor["vnf_lifecycle_events"]["authentication_type"]
         if vnf_descriptor['vnf_lifecycle_events']['authentication_type'] == 'HTTPBasicAuth':
           if vnf_descriptor['vnf_lifecycle_events']['authentication_port'] is not None:
-            event["authentication_port"] = vnf_descriptor['vnf_lifecycle_events']['authentication_port']
+            event["authentication_port"] = str(vnf_descriptor['vnf_lifecycle_events']['authentication_port'])
           else:
             event["authentication_port"] = "80"
           event["authentication_username"] = vnf_descriptor['vnf_lifecycle_events']['authentication_username']
